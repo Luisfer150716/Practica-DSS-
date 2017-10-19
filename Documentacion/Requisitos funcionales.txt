@@ -1,2 +1,44 @@
 REQUISITOS FUNCIONALES:
+	
+	RF-01: Lanzar dados.
+	El sistema proporcionará dos números aleatorios entre 1 y 6 en cada turno de los jugadores. 
+
+	RF-02: Mover ficha.
+	El sistema moverá la ficha del jugador que tenga el turno tantas casillas como indique la suma de los dados. 
+
+	RF-03 :Jugada
+	El sistema deberá actuar en función de la casilla en la que se haya caído tras mover la ficha.Los tipos de jugadas dependerán de la casilla en la que se encuentren y su estado actual:
+		-Casilla Salida: El jugador que caiga en la casilla salida recibirá 200$.
+		-Casilla Cárcel solo visitas: No ocurre nada.
+		-Casilla Cárcel:El jugador se queda 3 turnos sin jugar.
+		-Casilla Parking:El jugador recibe el bote acumulado.
+		-Casilla Ve a la Cárcel:El jugador desplaza su ficha a la casilla de la cárcel.
+		-Casillas Edificables:El jugador puede optativamente edificar pisos y hoteles si no están adquiridas ya por otros jugadores.En caso de que estuvieran compradas por otro jugador deberá pagar una cantidad equitativa al precio del alquiler de dicha propiedad y jugador propietario.En caso de que no se disponga del dinero suficiente se podrá hipotecar las propiedades que posea , si no se tienen propiedades o las propiedades hipotecadas no cubren el pago el jugador pierde automáticamente la partida.
+		-Casillas no Edificables:El jugador puede comprar los servicios públicos si no están adquiridos ya.En caso de que estén adquiridos deberán pagar una cantidad equitativa al número de casillas no edificables que tenga.
+		-Casillas Suerte:El jugador recibirá/pagará una cantidad de dinero al azar.
+
+	RF-04:Comprar Solar:
+	El sistema permitirá comprar el solar de una casilla edificable si esta no tiene dueño
+
+	RF-05: Edificar.
+	El sistema permitirá comprar casas por parte del jugador en su turno y si se encuentra en una casilla edificable de su propiedad,es decir ha comprado ya el solar en un turno anterior.
+
+
+
+
+	RF-06: Añadir jugador
+	El sistema permitirá a los jugadores introducir su nombre y escoger una figura.
+
+
+	RF-07: Comenzar partida.
+	El sistema repartirá el dinero entre los jugadores y los colocará en la casilla de salida. Además comprobará que la cantidad de jugadores está entre 2 y 4, ambos incluidos y el orden en el que participan los jugadores se decidirá de forma aleatoria.
+
+	RF-08: Acabar partida.
+	El sistema permitirá acabar la partida si todos los jugadores se ponen de acuerdo, o cuando solo quede un jugador con dinero. 
+
+	RF-09: Rendirse.
+	El sistema permitirá que cualquier jugador en su turno pueda rendirse.
+
+
+
 
