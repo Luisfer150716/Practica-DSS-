@@ -1,4 +1,9 @@
-REQUISITOS FUNCIONALES:
+﻿REQUISITOS FUNCIONALES:
+El software a realizar permitirá partidas offline de Monopoly clásico.
+El software debe ser capaz de gestionar las distintas jugadas que se pueden dar en la partida así como determinar un ganador de la misma.
+Una partida consiste en lanzar los dados y mover una ficha por el tablero en la misma dirección e ir adquiriendo propiedades para intentar conseguir más dinero.
+Una partida acaba automáticamente cuando solo queda un jugador con dinero.
+
 	
 	RF-01: Lanzar dados.
 	El sistema proporcionará dos números aleatorios entre 1 y 6 en cada turno de los jugadores. 
@@ -30,15 +35,19 @@ REQUISITOS FUNCIONALES:
 	El sistema permitirá a los jugadores introducir su nombre y escoger una figura.
 
 
+	
 	RF-07: Comenzar partida.
 	El sistema repartirá el dinero entre los jugadores y los colocará en la casilla de salida. Además comprobará que la cantidad de jugadores está entre 2 y 4, ambos incluidos y el orden en el que participan los jugadores se decidirá de forma aleatoria.
 
-	RF-08: Acabar partida.
+	RF-08:Guardar partida.
+	El sistema deberá poder guardar el estado actual de una partida.
+
+	RF-09:Cargar partida.
+	El sistema deberá poder cargar una partida anterior y continuarla.
+
+	RF-10: Acabar partida.
 	El sistema permitirá acabar la partida si todos los jugadores se ponen de acuerdo, o cuando solo quede un jugador con dinero. 
 
-	RF-09: Rendirse.
+	RF-11: Rendirse.
 	El sistema permitirá que cualquier jugador en su turno pueda rendirse.
-
-
-
 
