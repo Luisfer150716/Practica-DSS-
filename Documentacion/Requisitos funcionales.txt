@@ -1,53 +1,114 @@
 ﻿REQUISITOS FUNCIONALES:
+
+
 El software a realizar permitirá partidas offline de Monopoly clásico.
 El software debe ser capaz de gestionar las distintas jugadas que se pueden dar en la partida así como determinar un ganador de la misma.
 Una partida consiste en lanzar los dados y mover una ficha por el tablero en la misma dirección e ir adquiriendo propiedades para intentar conseguir más dinero.
 Una partida acaba automáticamente cuando solo queda un jugador con dinero.
-
-	
-	RF-01: Lanzar dados.
-	El sistema proporcionará dos números aleatorios entre 1 y 6 en cada turno de los jugadores. 
-
-	RF-02: Mover ficha.
-	El sistema moverá la ficha del jugador que tenga el turno tantas casillas como indique la suma de los dados. 
-
-	RF-03 :Jugada
-	El sistema deberá actuar en función de la casilla en la que se haya caído tras mover la ficha.Los tipos de jugadas dependerán de la casilla en la que se encuentren y su estado actual:
-		-Casilla Salida: El jugador que caiga en la casilla salida recibirá 200$.
-		-Casilla Cárcel solo visitas: No ocurre nada.
-		-Casilla Cárcel:El jugador se queda 3 turnos sin jugar.
-		-Casilla Parking:El jugador recibe el bote acumulado.
-		-Casilla Ve a la Cárcel:El jugador desplaza su ficha a la casilla de la cárcel.
-		-Casillas Edificables:El jugador puede optativamente edificar pisos y hoteles si no están adquiridas ya por otros jugadores.En caso de que estuvieran compradas por otro jugador deberá pagar una cantidad equitativa al precio del alquiler de dicha propiedad y jugador propietario.En caso de que no se disponga del dinero suficiente se podrá hipotecar las propiedades que posea , si no se tienen propiedades o las propiedades hipotecadas no cubren el pago el jugador pierde automáticamente la partida.
-		-Casillas no Edificables:El jugador puede comprar los servicios públicos si no están adquiridos ya.En caso de que estén adquiridos deberán pagar una cantidad equitativa al número de casillas no edificables que tenga.
-		-Casillas Suerte:El jugador recibirá/pagará una cantidad de dinero al azar.
-
-	RF-04:Comprar Solar:
-	El sistema permitirá comprar el solar de una casilla edificable si esta no tiene dueño
-
-	RF-05: Edificar.
-	El sistema permitirá comprar casas por parte del jugador en su turno y si se encuentra en una casilla edificable de su propiedad,es decir ha comprado ya el solar en un turno anterior.
+        
+        RF-01: Lanzar dados.
+El sistema proporcionará dos números aleatorios entre 1 y 6 en cada turno de los jugadores. 
 
 
+        RF-02: Mover ficha.
+El sistema moverá la ficha del jugador que tenga el turno tantas casillas como indique la suma de los dados. 
 
 
-	RF-06: Añadir jugador
-	El sistema permitirá a los jugadores introducir su nombre y escoger una figura.
+RF-03 :Jugada
+El sistema deberá actuar en función de la casilla en la que se haya caído tras mover la ficha.Los tipos de jugadas dependerán de la casilla en la que se encuentren y su estado actual:
+-Casilla Salida: El jugador que caiga en la casilla salida recibirá 200$.
+-Casilla Cárcel solo visitas: No ocurre nada.
+-Casilla Cárcel:El jugador se queda 3 turnos sin jugar.
+-Casilla Parking:El jugador recibe el bote acumulado.
+-Casilla Ve a la Cárcel:El jugador desplaza su ficha a la casilla de la cárcel.
+-Casillas Edificables:El jugador puede optativamente edificar pisos y hoteles si no están adquiridas ya por otros jugadores.En caso de que estuvieran compradas por otro jugador deberá pagar una cantidad equitativa al precio del alquiler de dicha propiedad y jugador propietario.En caso de que no se disponga del dinero suficiente se podrá hipotecar las propiedades que posea , si no se tienen propiedades o las propiedades hipotecadas no cubren el pago el jugador pierde automáticamente la partida.
+-Casillas no Edificables:El jugador puede comprar los servicios públicos si no están adquiridos ya.En caso de que estén adquiridos deberán pagar una cantidad equitativa al número de casillas no edificables que tenga.
+-Casillas Suerte:El jugador recibirá/pagará una cantidad de dinero al azar.
 
 
-	
-	RF-07: Comenzar partida.
-	El sistema repartirá el dinero entre los jugadores y los colocará en la casilla de salida. Además comprobará que la cantidad de jugadores está entre 2 y 4, ambos incluidos y el orden en el que participan los jugadores se decidirá de forma aleatoria.
+RF-04:Comprar Solar:El sistema permitirá comprar el solar de una casilla edificable si esta no tiene dueño
 
-	RF-08:Guardar partida.
-	El sistema deberá poder guardar el estado actual de una partida.
 
-	RF-09:Cargar partida.
-	El sistema deberá poder cargar una partida anterior y continuarla.
+RF-05: Edificar.
+El sistema permitirá comprar casas por parte del jugador en su turno y si se encuentra en una casilla edificable de su propiedad,es decir ha comprado ya el solar en un turno anterior.
 
-	RF-10: Acabar partida.
-	El sistema permitirá acabar la partida si todos los jugadores se ponen de acuerdo, o cuando solo quede un jugador con dinero. 
 
-	RF-11: Rendirse.
-	El sistema permitirá que cualquier jugador en su turno pueda rendirse.
 
+
+
+
+
+
+        RF-06: Añadir jugador
+El sistema permitirá a los jugadores introducir su nombre y escoger una figura.
+
+
+
+
+RF-07: Comenzar partida.
+El sistema repartirá el dinero entre los jugadores y los colocará en la casilla de salida. Además comprobará que la cantidad de jugadores está entre 2 y 4, ambos incluidos y el orden en el que participan los jugadores se decidirá de forma aleatoria.
+
+
+RF-08:Guardar partida.
+El sistema deberá poder guardar el estado actual de una partida.
+
+
+RF-09:Cargar partida.
+El sistema deberá poder cargar una partida anterior y continuarla.
+
+
+RF-10: Acabar partida.
+El sistema permitirá acabar la partida si todos los jugadores se ponen de acuerdo, o cuando solo quede un jugador con dinero. 
+
+
+RF-11: Rendirse.
+El sistema permitirá que cualquier jugador en su turno pueda rendirse.
+
+
+
+
+
+
+CASOS DE USO:
+
+
+Planificador
+----------------------------
+CrearNuevaPartida: 
+1-Se indican en número de jugadores que van a jugar la partida 
+2-Se crea un objeto partida
+3-Se llama a AñadirJugador hasta cubrir el número de jugadores indicados guardando dichos jugadores en la partida.
+GuardarPartida:
+1-Se guarda en memoria el estado actual de la partida.
+CargarPartida:
+1-Se elije una partida guardada 
+2-Se carga su estado y se continúa la partida.
+AcabarPartida:
+1-Se borran todos los datos de la partida actual y el juego acaba.
+2-Se vuelve a la pantalla inicial.
+GetPartida:
+1-Se devuelve la partida actual.
+AñadirJugador:Se indica el nombre del jugador nuevo y la figura que va a utilizar y se añade a la partida
+
+
+
+
+
+
+Jugador
+
+
+------------------------
+
+
+LanzarDados: 
+1. El jugador lanza los dados 
+2. La ficha se moverá tantas casillas como se obtenga en la suma de ambos dados.
+ComprarPropiedad: 
+1. El jugador compra una propiedad 
+2. Se le restará la cantidad de dinero que valga dicha propiedad.
+ConsultarDinero:
+1. El jugador puede consultar su dinero.
+Edificar: 
+1. El jugador puede edificar en una propiedad suya al estar en dicha casilla. 
+2. Se le restará el dinero que valga edificar.
