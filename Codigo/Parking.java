@@ -1,9 +1,9 @@
 public class Parking extends CasillaMonopoly{
-	int bote=0;
+	int bote;
 
-	public Parking(String nombre, int bote){
+	public Parking(String nombre){
 		super(nombre);
-		this.bote = bote;
+		this.bote = 0;
 	}
 
 	public int getBote(){
