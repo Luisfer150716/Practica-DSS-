@@ -33,12 +33,12 @@ public class Jugador{
 	}
 
 	public void comprarPropiedad(Propiedad p){
-		int i=0;
+		int i=1;
 		while(propiedades[i] != "") {
 			i++;
 		}
-		if(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 15 || casilla_actual == 25 || 
-			casilla_actual == 28 || casilla_actual == 35)
+		if(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 16 || casilla_actual == 26 || 
+			casilla_actual == 29 || casilla_actual == 36)
 			if(p.getValor() <= dinero)
 				propiedadesNoEdificables[i] = casilla_actual;
 			else System.out.println("No tienes suficiente dinero.");
