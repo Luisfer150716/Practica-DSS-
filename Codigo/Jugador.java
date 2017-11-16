@@ -2,6 +2,7 @@
 public class Jugador{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
+	private int id;
 	private Propiedad[28] propiedadesEdificables; 
 	private Propiedad[6] propiedadesNoEdificables; 
 
