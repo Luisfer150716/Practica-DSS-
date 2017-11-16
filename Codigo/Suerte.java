@@ -14,14 +14,14 @@ public class Suerte extends CasillaMonopoly{
 		return dAleatorio;
 	}
 	
-	public void accion(){
+	public void accion(Jugador j){
 		int a= Math.floor(Math.random()*2+1);
 		
 		if(a==1){
-			this.setCasilla_actual(this.getCasilla_actual+=casillasAleatorio());
+			j.setCasilla_actual(this.getCasilla_actual+=casillasAleatorio());
 		}
 		else{
-			this.setDinero(this.getDinero()+=dineroAleatorio());
+			j.setDinero(this.getDinero()+=dineroAleatorio());
 		}
 	}
 }
