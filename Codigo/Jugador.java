@@ -23,6 +23,7 @@ public class Jugador{
 	public void setFigura(String figura) {this.figura = figura;}
 	public void setCasilla_actual(int casilla_actual) {this.casilla_actual = casilla_actual;}
 	public void setDinero(int dinero) { this.dinero = dinero;}
+	public void setId(int id){this.id=id;}
 	public void setPropiedadesEdificables(Propiedad[] propiedades) {this.propiedadesEdificables = propiedades;}
 	public void setPropiedadesNoEdificables(Propiedad[] propiedades) {this.propiedadesNoEdificables = propiedades;}
 	public void lanzarDados(){
