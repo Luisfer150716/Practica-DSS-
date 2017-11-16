@@ -30,6 +30,35 @@ public class Edificable extends Propiedad{
 		
 		
 		else{
+			if(this.dueño.getId() == j.getId()){ //TU ERES EL DUEÑO,NO PAGAS, PUEDES CONSTRUIR
+				System.out.println("Tu propiedad edificable no tiene casas , quieres construir?");
+				Scanner entrada = new Scanner(System.in);
+				int compra = entrada.nextInt();
+				if(compra = 1){
+					boolean casa = false;
+					while(!casa){
+						if(j.getDiner() >= this.valor){
+							int construyeMax = j.getDiner() / this.valor;
+							System.out.printl("Puedes construir hasta "+j.getDiner()/this.valor);
+							
+							int num_cons = entrada.nextInt();
+							while(num_cons < 0 || num_cons > construyeMax){
+								System.out.println("Numero incorrecto ,introduce otro"); 
+								num_cons = entrada.nextInt();	
+							}
+							this.n_casas = num_cons;
+							j.setDinero(j.getDinero() - (num_cons * valor));
+						}
+						else{
+							casa = true;	
+						}
+						
+					}
+				}
+				else{
+					System.out.println("Decides no construir!");
+				}
+			}
 			if(this.n_casas == 0){
 				System.out.println("Tienes que pagar al jugador"+dueño.getNombre()+ "la cantidad de "+alquiler+ "euros.");	
 			}
