@@ -1,20 +1,23 @@
 
 public class FabricaMonopolyClasico extends FabricaTablero{
-	Propiedad nuevaEdificable(int coste,int beneficio,int alquiler){
-		return Propiedad(coste,beneficio,alquiler);
+	Casilla vacia(String nombre){
+		return Casilla(nombre);	
 	}
-	Propiedad nuevaNoEdificable(int coste,int beneficio){
-		return Propiedad(coste,beneficio);
+	Propiedad nuevaEdificable(String nombre ,int coste,int alquiler){
+		return Propiedad(nombre ,coste,alquiler);
 	}
-	Suerte nuevaSuerte(int casillas,int dinero){
-		return Suerte(casillas,recompensa);
+	Propiedad nuevaNoEdificable(String nombre ,int coste,int beneficio){
+		return Propiedad(nombre ,coste,beneficio);
 	}
-	Carcel nuevaCarcel(int turnos){
-		return Carcel(turnos);
+	Suerte nuevaSuerte(String nombre ,int casillas,int dinero){
+		return Suerte(nombre ,casillas,recompensa);
+	}
+	Carcel nuevaCarcel(String nombre ,int turnos){
+		return Carcel(nombre ,turnos);
 	}
 	//PARKING
-	Recompensa nuevaRecompensa(int premio){
-		return Recompensa(premio);
+	Recompensa nuevaRecompensa(String nombre ,int premio){
+		return Recompensa(nombre ,premio);
 	}
 	
 
