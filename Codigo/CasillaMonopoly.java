@@ -10,4 +10,5 @@ public class CasillaMonopoly{
 	public String getNombre(){
 		return this.nombre;
 	}
+	public void accion();
 }
