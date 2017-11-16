@@ -3,6 +3,7 @@ public class Jugador{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
 	private int id;
+	private boolean estasCarcel;
 	private Propiedad[28] propiedadesEdificables; 
 	private Propiedad[6] propiedadesNoEdificables; 
 
@@ -17,6 +18,7 @@ public class Jugador{
 	public String getFigura() {return this.figura;}
 	public int getCasilla_actual() {return this.casilla_actual;}
 	public int getDinero() {return this.dinero;}
+	public boolean getCarcel(){return this.estasCarcel;}
 	public Propiedad[] getPropiedadesEdificables(){ return this.propiedadesEdificables;}
 	public Propiedad[] getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
@@ -24,6 +26,7 @@ public class Jugador{
 	public void setCasilla_actual(int casilla_actual) {this.casilla_actual = casilla_actual;}
 	public void setDinero(int dinero) { this.dinero = dinero;}
 	public void setId(int id){this.id=id;}
+	public void setCarcel(boolean){this.estasCarcel = estasCarcel;}
 	public void setPropiedadesEdificables(Propiedad[] propiedades) {this.propiedadesEdificables = propiedades;}
 	public void setPropiedadesNoEdificables(Propiedad[] propiedades) {this.propiedadesNoEdificables = propiedades;}
 	public void lanzarDados(){
