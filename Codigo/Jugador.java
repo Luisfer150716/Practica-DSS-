@@ -2,8 +2,8 @@
 public class Jugador{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
-	private Propiedad[22] propiedadesEdificables; 
-	private Propiedad[6] propiedadesNoEdificables; 
+	private Propiedad[28] propiedades; 
+	//private Propiedad[6] propiedadesNoEdificables; 
 
 	public Jugador(String nombre, String figura, int casilla_actual, int dinero){
 		this.nombre = nombre;
