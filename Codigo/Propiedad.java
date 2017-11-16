@@ -1,7 +1,7 @@
 public class Propiedad extends CasillaMonopoly{
 
-	int valor;
-	Jugador dueño;
+	public int valor;
+	public Jugador dueño;
 	
 	public Propiedad(String nombre, int valor){
 		super(nombre);
