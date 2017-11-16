@@ -3,6 +3,10 @@ public class FabricaMonopolyClasico extends FabricaTablero{
 	Casilla vacia(String nombre){
 		return Casilla(nombre);	
 	}
+	Impuesto nuevaImpuesto(String nombre,int imp){
+		return Impuesto(nombre,imp);	
+	}
+	
 	Propiedad nuevaEdificable(String nombre ,int coste,int alquiler){
 		return Propiedad(nombre ,coste,alquiler);
 	}
@@ -16,8 +20,8 @@ public class FabricaMonopolyClasico extends FabricaTablero{
 		return Carcel(nombre ,turnos);
 	}
 	//PARKING
-	Recompensa nuevaRecompensa(String nombre ,int premio){
-		return Recompensa(nombre ,premio);
+	Recompensa nuevaRecompensa(String nombre){
+		return Recompensa(nombre);
 	}
 	
 
