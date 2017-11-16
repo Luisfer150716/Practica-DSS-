@@ -13,4 +13,9 @@ public class Parking extends CasillaMonopoly{
 	public void incremento(int dinero){
 		this.bote += dinero;
 	}
+	
+	public void accion(Jugador j){		
+		j.setDinero(j.getDinero()+bote);
+		bote=0;
+	}
 }
