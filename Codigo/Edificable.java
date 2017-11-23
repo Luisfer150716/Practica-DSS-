@@ -48,6 +48,7 @@ public class Edificable extends Propiedad{
 							}
 							this.n_casas = num_cons;
 							j.setDinero(j.getDinero() - (num_cons * valor));
+							j.edificar(this);
 						}
 						else{
 							casa = true;	
@@ -59,12 +60,20 @@ public class Edificable extends Propiedad{
 					System.out.println("Decides no construir!");
 				}
 			}
-			if(this.n_casas == 0){
-				System.out.println("Tienes que pagar al jugador"+dueño.getNombre()+ "la cantidad de "+alquiler+ "euros.");	
+			else{
+				
+				if(this.n_casas == 0){
+					System.out.println("Tienes que pagar al jugador"+dueño.getNombre()+ "la cantidad de "+alquiler+ "euros.");
+					j.setDinero(j.getDinero() - alquiler);
+				}
+				else{
+					System.out.println("Tienes que pagar al jugador"+dueño.getNombre()+ "la cantidad de "+alquiler*n_casas+ "euros.");
+					j.setDinero(j.getDinero() - alquiler*n_casas);
+				}
 			}
 			else{
 				
-			System.out.println("Tienes que pagar al jugador"+dueño.getNombre()+ "la cantidad de "+alquiler*n_casas+ "euros.");
+			
 			
 		}
 	}
