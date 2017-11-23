@@ -107,8 +107,10 @@ public class Jugador{
 	
 	public void borrarEdificable(int i){
 		propiedadesEdificables.remove(i);
+		System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
 	}
 	public void borrarNoEdificable(int i){
 		propiedadesNoEdificables.remove(i);
+		System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
 	}
 }
