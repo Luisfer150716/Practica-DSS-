@@ -85,12 +85,27 @@ public static void main(String[] args) {
 					else{
 						if(partida.jugadores.elementAt(jugador).propiedadesEdificables.isEmpty() && partida.jugadores.elementAt(jugador).propiedadesNoEdificables.isEmpty()){
 							partida.eliminarJugador(jugador);
+							
 						}
 						else{
 							mostrarPropiedades(partida.jugadores.elementAt(jugador));
-							int pe= sc.nextInt();
-
-							selectEdificable()
+							int op = sc.nextInt();
+							if(op == 1){
+								System.out.println("Introduce el numero de la propiedad edificable que quieras eliminar");
+								int pr = sc.nextInt();
+								if(partida.jugadores.elementAt(jugador) != null){
+									partida.jugadores.elementAt(jugador).setDinero(	partida.jugadores.elementAt(jugador).getDinero() +
+														       partida.jugadores.elementAt(jugador).getEdificables.elementAt(pr).getValor());
+									
+									partida.propiedad_a_banca(banca,partida.jugadores.elementAt(jugador).getEdificables.elementAt(pr));
+									
+								}
+							}else{
+								System.out.println("Introduce el numero de la propiedad no edificable que quieras eliminar");
+								int pr = sc.nextInt();
+								partida.jugadores.elementAt(jugador).borrarNoEdificable(pr);
+							}
+				
 						}
 
 
