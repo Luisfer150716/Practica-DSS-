@@ -9,7 +9,9 @@ public class Edificable extends Propiedad{
 		this.tieneDueño = false;
 		this.n_casas = 0;
 	}
-	
+	public int getPisos(){
+		return n_casas;	
+	}
 	public void accion(Jugador j){
 		if(!tieneDueño){
 			if(j.getDinero() >= this.valor){
