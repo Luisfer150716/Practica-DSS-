@@ -73,7 +73,7 @@ class PartidaMonopoly implements Serializable{
 		return false;
 	}
 	public void eliminarJugador(int i){
-		jugadores.elementAt(i) = null;
+		jugadores.remove(i);
 	}
 		
 	}
