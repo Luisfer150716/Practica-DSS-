@@ -4,8 +4,8 @@ public class Jugador{
 	private int casilla_actual, dinero;
 	private int id;
 	private boolean estasCarcel;
-	private Propiedad[28] propiedadesEdificables; 
-	private Propiedad[6] propiedadesNoEdificables; 
+	private Vector<Propiedad> propiedadesEdificables; 
+	private Vector<Propiedad> propiedadesNoEdificables; 
 
 	public Jugador(String nombre, String figura, int casilla_actual, int dinero){
 		this.nombre = nombre;
@@ -38,18 +38,16 @@ public class Jugador{
 	}
 
 	public void comprarPropiedad(Propiedad p){
-		int i=1;
-		while(propiedades[i] != "") {
-			i++;
-		}
+		//NO EDIFICABLES		
 		if(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 16 || casilla_actual == 26 || 
 			casilla_actual == 29 || casilla_actual == 36)
 			if(p.getValor() <= dinero)
-				propiedadesNoEdificables[i] = casilla_actual;
+				propiedadesNoEdificables.add(casilla_actual);
 			else System.out.println("No tienes suficiente dinero.");
+		//EDIFICABLES
 		else 
 			if(p.getValor() <= dinero)
-				propiedadesEdificables[i] = casilla_actual;
+				propiedadesEdificables.add(casilla_actual);
 			else System.out.println("No tienes suficiente dinero.");
 
 		
@@ -61,18 +59,27 @@ public class Jugador{
 		return getDinero();
 	}
 
-	public void edificar(int n_pisos){
-		int i =0;
-		while (propiedadesEdificables[i] != casilla_actual || i!=23){
-			i++;
-
+	public void edificar(Propiedad p){
+		int i = 0; 
+		boolean encontrado = false;
+		
+		for(int i = 0 ; i < propiedadesEdificables.size();i++){
+			if(propiedadesEdificables.elementAt(i).getNombre() == p.getNombre){
+				propiedadesEdificables.add(i,p);
+				encontrado = true;
+			}
 		}
-
-		if(i==23) System.out.println("No tienes esta propiedad");
-		else {
-			propiedadesEdificables[i].setN_casas(propiedadesEdificables[i].getN_casas() + n_pisos);
-			System.out.println("Piso construido");
+		if(encontrada){
+			System.out.println("Se ha edificado correctamente, ahora el jugador"+this.getName()+" tiene "+p.getPisos()
+					   " en la propiedad "+p.getNombre());
 		}
+		else{
+			System.out.println("No se pudo edificar");
+		}
+			
+
+		
+		
 	}
 	public void anadirEdificable(Edificable propiedad){
 		boolean colocada = false;
