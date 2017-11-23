@@ -1,4 +1,5 @@
-class PartidaMonopoly{
+import java.io.serializable;
+class PartidaMonopoly implements Serializable{
 	private int n_jugadores;
 	private Jugador[] jugadores; //maximo 4 jugadores;
 	private static casillaMonopoly[] tablero = new casillaMonopoly[40];
@@ -76,10 +77,17 @@ class PartidaMonopoly{
 	}
 		
 	}
-	public Partida guardarPartida(){
+	public static void guardarPartida(Serializable datos,String nombre)throws Exception{
+		try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(nombre)))){
+			oos.writeObject(datos);
+		}
+		
 
 	}
-	public Partida cargarPartida(){
+	public static Object cargarPartida(String nombre){
+		try(ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(nombre)))){
+			return ois.readObject();
+		}
 
 	}
 	
