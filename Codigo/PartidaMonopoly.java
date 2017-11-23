@@ -10,7 +10,7 @@ class PartidaMonopoly implements Serializable{
 		this.jugadores = new Jugador[n];
 	}
 	public void construyeTablero(){
-		FabricaMonopolyClasico fabricaMonopoly;
+		FabricaTablero fabricaMonopoly.instancia("FabricaMonopolyClasico");
 		tablero[0] = fabricaMonopoly.vacia("Salida");
 		tablero[1] = fabricaMonopoly.nuevaEdificable("Ronda de valencia",60,10);
 		tablero[2] = fabricaMonopoly.nuevaSuerte("Caja de comunidad 1");
