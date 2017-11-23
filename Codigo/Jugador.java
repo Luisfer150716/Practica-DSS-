@@ -104,5 +104,11 @@ public class Jugador{
 		}
 			
 	}
-
+	
+	public void borrarEdificable(int i){
+		propiedadesEdificables.remove(i);
+	}
+	public void borrarNoEdificable(int i){
+		propiedadesNoEdificables.remove(i);
+	}
 }
