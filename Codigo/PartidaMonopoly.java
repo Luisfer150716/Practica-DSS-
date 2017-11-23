@@ -76,7 +76,17 @@ class PartidaMonopoly implements Serializable{
 		jugadores.remove(i);
 	}
 		
+	public void mostrarPropiedades(Jugador j){
+		System.out.println("Propiedades Edificables en tu posesion: ");
+		for(int i=0; i<j.propiedadesEdificables.size(); i++){
+			System.out.println("	"+i+" - Propiedad: "+j.propiedadesEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesEdificables.elementAt(i).getValor());
+		}
+		System.out.println("Propiedades No edificables en tu posesion: ")
+		for(int k=0; k<j.propiedadesNoEdificables.size();j++){
+			System.out.println("	"+k+" - Propiedad: "+j.propiedadesNoEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesNoEdificables.elementAt(i).getValor());
+		}
 	}
+	
 	public static void guardarPartida(Serializable datos,String nombre)throws Exception{
 		try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(nombre)))){
 			oos.writeObject(datos);
