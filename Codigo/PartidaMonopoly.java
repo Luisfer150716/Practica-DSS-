@@ -1,7 +1,7 @@
 import java.io.serializable;
 class PartidaMonopoly implements Serializable{
 	private int n_jugadores;
-	private Jugador[] jugadores; //maximo 4 jugadores;
+	private vector<Jugador>[] jugadores; //maximo 4 jugadores;
 	private static casillaMonopoly[] tablero = new casillaMonopoly[40];
 	private long duracionPartida ;
 
@@ -65,15 +65,15 @@ class PartidaMonopoly implements Serializable{
 
 	public boolean anadirJugador(Jugador j){
 		for(int i = 0 ; i < n_jugadores;i++){
-			if(jugadores[i] == null){
-				jugadores[i] = j;
+			if(jugadores.elemenAt(i) == null){
+				jugadores.elementAt(i) = j;
 				return true;
 			}
 		}
 		return false;
 	}
 	public void eliminarJugador(int i){
-		jugadores[i] = null;
+		jugadores.elementAt(i) = null;
 	}
 		
 	}
