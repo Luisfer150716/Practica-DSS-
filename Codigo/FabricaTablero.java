@@ -2,13 +2,17 @@
 
 public class FabricaTablero{
 	public static FabricaTablero instancia(String fabrica){
-		if(fabrica == "FabricaTableroMonopoly"){
-			_fabrica = new FabricaTableroMonopoly();	
-		}
-		else{
-			_fabrica = new FabricaTablero();	
+		if(_fabrica == 0){
+			if(fabrica == "FabricaTableroMonopoly"){
+				_fabrica = new FabricaTableroMonopoly();	
+			}
+			else{
+				_fabrica = new FabricaTablero();	
+			}
 		}
 		return _fabrica;
+		
+		
 	}
 	public Casilla vacia(String nombre);
 	public Casilla nuevaSuerte(String nombre,int casillas,int dinero,);
