@@ -1,4 +1,5 @@
 
+
 public static void main(String[] args) {
 
 								
@@ -41,41 +42,63 @@ public static void main(String[] args) {
 					String nombre = sc.nextString();
 					System.out.println("Introduce figura del Jugador "+i);
 					String figura = sc.nextString();
-					partida.jugadores[i] = new Jugador(nombre, figura, 1, 500);
-					partida.jugadores[i].setId(i);
+					partida.jugadores.add(i,new Jugador(nombre, figura, 1, 500);
+					partida.jugadores.elementAt(i, this.setId(i);
 					
 				}
 
 				boolean seJuega=true;
 				int turno = 0;
 				int jugador = 1;
+				Jugador banca(banca, null, null, 999999);
 				while(seJuega){
 					System.out.println("Es el turno "+turno);
-					if(partida.jugadores[jugador].getCarcel()){
-						tablero[10].accion(partida.jugadores[jugador]);
+					if(partida.jugadores.elementAt(jugador).getCarcel()){
+						tablero[10].accion(partida.jugadores.elementAt(jugador));
 					}else{
 						System.out.println("Tira el jugador "+jugador);
-						System.out.println("Dinero: " +partida.jugadores[jugador].getDinero());
-						System.out.println("Casilla actual: "+partida.jugadores[jugador].getCasilla_actual());
+						System.out.println("Dinero: " +partida.jugadores.elementAt(jugador).getDinero());
+						System.out.println("Casilla actual: "+partida.jugadores.elementAt(jugador).getCasilla_actual());
 						System.out.println("Propiedades edificables: ");
-						for(int j = 0; j <partida.jugadores[jugador].propiedadesEdificables.length; j++){
-							System.out.println(partida.jugadores[jugador].propiedadesEdificables[j].getNombre());
+						for(int j = 0; j <partida.jugadores.elementAt(jugador).propiedadesEdificables.size(); j++){
+							System.out.println(partida.jugadores.elementAt(jugador).propiedadesEdificables.elementAt(j).getNombre());
 							}
 						System.out.println("Propiedades no edificables: ");
-						for(int j = 0; j <partida.jugadores[jugador].propiedadesNoEdificables.length; j++){
-							System.out.println(partida.jugadores[jugador].propiedadesNoEdificables[j].getNombre());
+						for(int j = 0; j <partida.jugadores.elementAt(jugador).propiedadesNoEdificables.size(); j++){
+							System.out.println(partida.jugadores.elementAt(jugador).propiedadesNoEdificables.elementAt(j).getNombre());
 							}
 
 						System.out.println("Jugador " +partida.jugadores[jugador].getNombre()+" tira los dados");
-						partida.jugadores[jugador].lanzarDados();
-						System.out.println(partida.jugadores[jugador].getNombre()+" se ha movido a la casilla: "+partida.jugadores[jugador].getCasilla_actual());
+						partida.jugadores.elementAt(jugador).lanzarDados();
+						System.out.println(partida.jugadores.elementAt(jugador).getNombre()+" se ha movido a la casilla: "+partida.jugadores[jugador].getCasilla_actual());
 
-						partida.tablero[partida.jugadores[jugador].getCasilla_actual()].accion(partida.jugadores[jugador]);
+						partida.tablero[partida.jugadores.elementAt(jugador).getCasilla_actual()].accion(partida.jugadores.elementAt(jugador));
 						}
-					jugador++;
-					if(jugador >4)
-						jugador = 1;
-					turno++;
+
+					if(partida.jugadores.elementAt(jugador).getDinero()>0){	
+						jugador++;
+						if(jugador >numJugadores)
+							jugador = 1;
+						turno++;
+					}
+
+					else{
+						if(partida.jugadores.elementAt(jugador).propiedadesEdificables.isEmpty() && partida.jugadores.elementAt(jugador).propiedadesNoEdificables.isEmpty()){
+							partida.eliminarJugador(jugador);
+						}
+						else{
+							mostrarPropiedades(partida.jugadores.elementAt(jugador));
+							int pe= sc.nextInt();
+
+							selectEdificable()
+						}
+
+
+
+						///for(int j=0; j<partida.jugadores[jugador].propiedadesEdificables.length;j++){
+							///if(partida.jugadores[jugador].propiedadesEdificables[j]
+						}
+					}
 				}
 
 
