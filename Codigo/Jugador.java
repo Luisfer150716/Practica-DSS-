@@ -7,18 +7,34 @@ public class Jugador{
 	private Vector<Propiedad> propiedadesEdificables; 
 	private Vector<Propiedad> propiedadesNoEdificables; 
 
-	public Jugador(String nombre, String figura, int casilla_actual, int dinero){
+	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id){
 		this.nombre = nombre;
 		this.figura = figura;
 		this.casilla_actual = casilla_actual;
 		this.dinero = dinero;
+		this.id = id;
 	}
-
+	public void mostrarEstado(){
+		System.out.println("Dinero: " +this.dinero);
+		System.out.println("Casilla actual: "+casilla_actual);
+		mostrarPropiedades();
+		
+	}
+	public void mostrarPropiedades(){
+		for(int j = 0; j <this.propiedadesEdificables.size(); j++){
+			System.out.println(this.propiedadesEdificables.elementAt(j).getNombre());
+		}
+		System.out.println("Propiedades no edificables: ");
+		for(int j = 0; j <this.propiedadesNoEdificables.size(); j++){
+			System.out.println(this.propiedadesNoEdificables.elementAt(j).getNombre());
+		}
+	}
 	public String getNombre() {return this.nombre;}
 	public String getFigura() {return this.figura;}
 	public int getCasilla_actual() {return this.casilla_actual;}
 	public int getDinero() {return this.dinero;}
 	public boolean getCarcel(){return this.estasCarcel;}
+	public int getId(){return this.id;}
 	public Propiedad[] getPropiedadesEdificables(){ return this.propiedadesEdificables;}
 	public Propiedad[] getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
@@ -58,7 +74,16 @@ public class Jugador{
 	public int consultarDinero(){
 		return getDinero();
 	}
-
+	public void mostrarPropiedades(){
+		System.out.println("Propiedades Edificables en tu posesion: ");
+		for(int i=0; i<propiedadesEdificables.size(); i++){
+			System.out.println("	"+i+" - Propiedad: "+propiedadesEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesEdificables.elementAt(i).getValor());
+		}
+		System.out.println("Propiedades No edificables en tu posesion: ")
+		for(int k=0; k<propiedadesNoEdificables.size();j++){
+			System.out.println("	"+k+" - Propiedad: "+propiedadesNoEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesNoEdificables.elementAt(i).getValor());
+		}
+	}
 	public void edificar(Propiedad p){
 		int i = 0; 
 		boolean encontrado = false;
@@ -104,13 +129,42 @@ public class Jugador{
 		}
 			
 	}
-	
+	public void hipotecaPropiedad(boolean edificable,Jugador banca,int i){
+		if(edificable){
+			if(propiedadesEdificables.elementAt(i) != null){
+				this.dinero = this.dinero + propiedadesEdificables.elementAt(i).getValor();
+				System.out.println("Ya no posees la propiedad "+propiedadesEdificables.elementAt(i).getNombre());
+				banca.anadirEdificable(propiedadesEdificables.elementAt(i));
+				propiedadesEdificables.remove(i);
+			}
+		}
+		else{
+			if(propiedadesNoEdificables.elementAt(i) != null){
+				this.dinero = this.dinero + propiedadesNoEdificables.elementAt(i).getValor();
+				System.out.println("Ya no posees la propiedad "+propiedadesNoEdificables.elementAt(i).getNombre());
+				banca.anadirEdificable(propiedadesNoEdificables.elementAt(i));
+				propiedadesNoEdificables.remove(i);
+			}
+		}
+	}
 	public void borrarEdificable(int i){
-		propiedadesEdificables.remove(i);
-		System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
+		if(propiedadesEdificables.elementAt(i) == null){
+			System.out.println("No existe dicho  edificable");
+		}
+		else{
+
+			propiedadesEdificables.remove(i);
+			System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
+		}
 	}
 	public void borrarNoEdificable(int i){
-		propiedadesNoEdificables.remove(i);
-		System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
+		if(propiedadesNoEdificables.elementAt(i) == null){
+			System.out.println("No existe dicho no edificable");
+		}
+		else{
+			propiedadesNoEdificables.remove(i);
+			System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
+		}
+		
 	}
 }
