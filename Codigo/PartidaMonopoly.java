@@ -1,13 +1,17 @@
 import java.io.serializable;
 class PartidaMonopoly implements Serializable{
-	private int n_jugadores;
-	private vector<Jugador>[] jugadores; //maximo 4 jugadores;
+	private int turnoActual ;
+	private int turnoJugador;
+	private Jugador jugadorActual;
+	private int num_jugadores;
+	private vector<Jugador> jugadores; //maximo 4 jugadores;
 	private static casillaMonopoly[] tablero = new casillaMonopoly[40];
 	private long duracionPartida ;
 
-	public PartidaMonopoly(int n){
-		this.n_jugadores = n;
-		this.jugadores = new Jugador[n];
+	public PartidaMonopoly(){
+		turnoActual = 1;
+		this.construyeTablero();
+		
 	}
 	public void construyeTablero(){
 		FabricaTablero fabricaMonopoly.instancia("FabricaMonopolyClasico");
@@ -61,44 +65,42 @@ class PartidaMonopoly implements Serializable{
 		return new Partida(this);
 	}
 
+	public int getTurno(){
+		return this.turnoActual;
+	}
 
-
-	public boolean anadirJugador(Jugador j){
+	public void anadirJugador(Jugador j){
 		for(int i = 0 ; i < n_jugadores;i++){
 			if(jugadores.elemenAt(i) == null){
 				jugadores.elementAt(i) = j;
-				return true;
+				
 			}
 		}
-		return false;
+		
 	}
 	public void eliminarJugador(int i){
 		jugadores.remove(i);
 	}
-		
-	public void mostrarPropiedades(Jugador j){
-		System.out.println("Propiedades Edificables en tu posesion: ");
-		for(int i=0; i<j.propiedadesEdificables.size(); i++){
-			System.out.println("	"+i+" - Propiedad: "+j.propiedadesEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesEdificables.elementAt(i).getValor());
-		}
-		System.out.println("Propiedades No edificables en tu posesion: ")
-		for(int k=0; k<j.propiedadesNoEdificables.size();j++){
-			System.out.println("	"+k+" - Propiedad: "+j.propiedadesNoEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesNoEdificables.elementAt(i).getValor());
-		}
+	public void setJugadorActual(Jugador j){
+		this.jugadorActual = j;
 	}
+
+	public void getJugadorActual(){
+		return this.jugadorActual;
+	}
+	public void siguienteTurno(){
+		if(jugadores.elemenAt(turnoJugador+1) == null){
+			turnoJugador = 0;
+		}
+		else{
+			turnoJugador++;
+		}
+		this.jugadorActual = jugadores.elemenAt(turnoJugador);
+	}
+		
 	
-	public static void guardarPartida(Serializable datos,String nombre)throws Exception{
-		try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(nombre)))){
-			oos.writeObject(datos);
-		}
-		
-
-	}
-	public static Object cargarPartida(String nombre){
-		try(ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(nombre)))){
-			return ois.readObject();
-		}
-
+	
+	
 	}
 	
 }
