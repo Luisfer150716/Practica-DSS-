@@ -1,3 +1,5 @@
+//DE MOMENTO NO TIENE UTILIDAD ESTA CLASE
+/*
 class Partida{
 	private final int n_jugadores; //obligatorio para cualquier juego
 	private final Jugador[] jugadores; // "" 				 ""
