@@ -1,3 +1,4 @@
+package monopolyclasico;
 import java.util.Scanner;
 
 public class NoEdificable extends Propiedad{
@@ -20,7 +21,7 @@ public class NoEdificable extends Propiedad{
 				int compra= sc.nextInt();
 				if(compra == 1){
 					this.tieneDueño= true;
-					this.Dueño = j;
+					setDueño(j);
 					j.anadirNoEdificable(this);
 				}
 				else{
@@ -29,13 +30,15 @@ public class NoEdificable extends Propiedad{
 			}
 		}
 		else{
-			if(this.Dueño.getId()!=j.getId()){
-				System.out.println("Tienes que pagar "+pago+" a "+this.Dueño.getNombre());
+			if(getDueño().getId()!=j.getId()){
+				System.out.println("Tienes que pagar "+pago+" a "+getDueño().getNombre());
 				j.setDinero(j.getDinero()-pago);
-				this.Dueño.setDinero(j.getDinero()+pago);
+				getDueño().setDinero(j.getDinero()+pago);
 			}
 			else{
 				System.out.println("Esta propiedad no edificable es tuya!");
 			
-	}
+                        }
+                }
+        }
 }
