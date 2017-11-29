@@ -1,11 +1,14 @@
-public class Carcel extends CasillaMonopoly{
-	int turnos = new int[4];
-	boolean visita = new boolean[4];
+package monopolyclasico;
+public class Carcel extends Casilla{
+	private int[] turnos = new int[4];
+	boolean[] visita = new boolean[4];
 
-	public Carcel(String nombre, int turnos, boolean visita){
+	public Carcel(String nombre){
 		super(nombre);
-		this.turnos = turnos;
-		this.visita = visita;
+                for(int i = 0 ; i < 4;i++){
+                    this.visita[i] = true;
+                }
+		
 	}
 	public void accion(Jugador j){
 		if(!j.getCarcel()){
