@@ -1,31 +1,38 @@
-import java.io.serializable;
+package monopolyclasico;
+
+import java.io.Serializable;
+import java.util.Vector;
+
+
 class PartidaMonopoly implements Serializable{
 	private int turnoActual ;
 	private int turnoJugador;
 	private Jugador jugadorActual;
 	private int num_jugadores;
-	private vector<Jugador> jugadores; //maximo 4 jugadores;
-	private static casillaMonopoly[] tablero = new casillaMonopoly[40];
+	private Vector<Jugador> jugadores; //maximo 4 jugadores;
+	private static Casilla[] tablero = new Casilla[40];
 	private long duracionPartida ;
+        FabricaTablero fabricaMonopoly;
 
-	public PartidaMonopoly(){
+	public PartidaMonopoly(FabricaTablero f){
 		turnoActual = 1;
 		this.construyeTablero();
+                this.fabricaMonopoly = f;
 		
 	}
 	public void construyeTablero(){
-		FabricaTablero fabricaMonopoly.instancia("FabricaMonopolyClasico");
+		
 		tablero[0] = fabricaMonopoly.vacia("Salida");
 		tablero[1] = fabricaMonopoly.nuevaEdificable("Ronda de valencia",60,10);
 		tablero[2] = fabricaMonopoly.nuevaSuerte("Caja de comunidad 1");
 		tablero[3] = fabricaMonopoly.nuevaEdificable("Plaza lavapies",60,15);
-		tablero[4] = fabricaMonopoly.nuevaImpuesto("Impuesto 1",200);
+		tablero[4] = fabricaMonopoly.nuevaImpuesto("Impuesto 1");
 		tablero[5] = fabricaMonopoly.nuevaNoEdificable("Estacion de Goya",200,50);
 		tablero[6] = fabricaMonopoly.nuevaEdificable("Glorieta Cuatro Caminos",100,20);
 		tablero[7] = fabricaMonopoly.nuevaSuerte("Suerte 1");
 		tablero[8] = fabricaMonopoly.nuevaEdificable("Avenida Reina Victoria",100,30);
 		tablero[9] = fabricaMonopoly.nuevaEdificable("Calle Bravo Murillo",120,40);
-		tablero[10] = fabricaMonopoly.nuevaCarcel(0,true);
+		tablero[10] = fabricaMonopoly.nuevaCarcel("Carcel");
 		tablero[11] = fabricaMonopoly.nuevaEdificable("Glorieta de Bilbao",140,50);
 		tablero[12] = fabricaMonopoly.nuevaNoEdificable("Compañia de electricidad",150,50);
 		tablero[13] = fabricaMonopoly.nuevaEdificable("Calle Alberto Aguilera",140,60);
@@ -53,7 +60,7 @@ class PartidaMonopoly implements Serializable{
 		tablero[35] = fabricaMonopoly.nuevaNoEdificable("Estacion del Norte",200,50);
 		tablero[36] = fabricaMonopoly.nuevaSuerte("Suerte 3");
 		tablero[37] = fabricaMonopoly.nuevaEdificable("Paseo de la Castellana",350,220);
-		tablero[38] = fabricaMonopoly.nuevaImpuesto("Impuesto 2",200);
+		tablero[38] = fabricaMonopoly.nuevaImpuesto("Impuesto 2");
 		tablero[39] = fabricaMonopoly.nuevaEdificable("Paseo del Prado",400,250);
 		
 	}
@@ -70,9 +77,9 @@ class PartidaMonopoly implements Serializable{
 	}
 
 	public void anadirJugador(Jugador j){
-		for(int i = 0 ; i < n_jugadores;i++){
-			if(jugadores.elemenAt(i) == null){
-				jugadores.elementAt(i) = j;
+		for(int i = 0 ; i < num_jugadores;i++){
+			if(jugadores.elementAt(i) == null){
+				jugadores.add(i,j) ;
 				
 			}
 		}
@@ -85,22 +92,30 @@ class PartidaMonopoly implements Serializable{
 		this.jugadorActual = j;
 	}
 
-	public void getJugadorActual(){
+	public Jugador getJugadorActual(){
 		return this.jugadorActual;
 	}
 	public void siguienteTurno(){
-		if(jugadores.elemenAt(turnoJugador+1) == null){
+		if(jugadores.elementAt(turnoJugador+1) == null){
 			turnoJugador = 0;
 		}
 		else{
 			turnoJugador++;
 		}
-		this.jugadorActual = jugadores.elemenAt(turnoJugador);
+		this.jugadorActual = jugadores.elementAt(turnoJugador);
 	}
 		
-	
-	
-	
+	public void mostrarPropiedades(Jugador j){
+		System.out.println("Propiedades Edificables en tu posesion: ");
+		for(int i=0; i<j.getPropiedadesEdificables().size(); i++){
+			System.out.println("	"+i+" - Propiedad: "+j.getPropiedadesEdificables().elementAt(i).getNombre()+" - Valor: "+j.getPropiedadesEdificables().elementAt(i).getValor());
+		}
+		System.out.println("Propiedades No edificables en tu posesion: ");
+		for(int k=0; k<j.getPropiedadesNoEdificables().size();k++){
+			System.out.println("	"+k+" - Propiedad: "+j.getPropiedadesNoEdificables().elementAt(k).getNombre()+" - Valor: "+j.getPropiedadesNoEdificables().elementAt(k).getValor());
+		}
 	}
+	
+	
 	
 }
