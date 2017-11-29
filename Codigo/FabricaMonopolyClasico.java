@@ -1,27 +1,27 @@
-
+package monopolyclasico;
 public class FabricaMonopolyClasico extends FabricaTablero{
-	Casilla vacia(String nombre){
-		return Casilla(nombre);	
+	public Casilla vacia(String nombre){
+		return new Casilla(nombre);	
 	}
-	Impuesto nuevaImpuesto(String nombre,int imp){
-		return Impuesto(nombre,imp);	
+	public Casilla nuevaImpuesto(String nombre){
+		return new Impuesto(nombre);	
 	}
 	
-	Propiedad nuevaEdificable(String nombre ,int coste,int alquiler){
-		return Propiedad(nombre ,coste,alquiler);
+	public Casilla nuevaEdificable(String nombre ,int coste,int alquiler){
+		return new Edificable(nombre ,coste,alquiler);
 	}
-	Propiedad nuevaNoEdificable(String nombre ,int coste,int beneficio){
-		return Propiedad(nombre ,coste,beneficio);
+	public Casilla nuevaNoEdificable(String nombre ,int coste,int beneficio){
+		return new NoEdificable(nombre ,coste,beneficio);
 	}
-	Suerte nuevaSuerte(String nombre ,int casillas,int dinero){
-		return Suerte(nombre ,casillas,recompensa);
+	public Casilla nuevaSuerte(String nombre){
+		return new Suerte(nombre);
 	}
-	Carcel nuevaCarcel(String nombre ,int turnos){
-		return Carcel(nombre ,turnos);
+	public Casilla nuevaCarcel(String nombre){
+		return new Carcel(nombre);
 	}
 	//PARKING
-	Recompensa nuevaRecompensa(String nombre){
-		return Recompensa(nombre);
+	public Casilla nuevaRecompensa(String nombre){
+		return new Parking(nombre);
 	}
 	
 
