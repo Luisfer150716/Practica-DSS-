@@ -1,29 +1,26 @@
+package monopolyclasico;
 
-
-public class FabricaTablero{
+public abstract class FabricaTablero{
 	public static FabricaTablero instancia(String fabrica){
-		if(_fabrica == 0){
+		if(_fabrica == null){
 			if(fabrica == "FabricaTableroMonopoly"){
-				_fabrica = new FabricaTableroMonopoly();	
+				_fabrica = new FabricaMonopolyClasico();	
 			}
-			else{
-				_fabrica = new FabricaTablero();	
-			}
+			
 		}
 		return _fabrica;
-		
-		
+				
 	}
-	public Casilla vacia(String nombre);
-	public Casilla nuevaSuerte(String nombre,int casillas,int dinero,);
-	public Casilla nuevaCarcel(String nombre,int turnos);
-	public Casilla nuevaRecompensa(String nombre,int premio);
+        public abstract Casilla nuevaEdificable(String nombre ,int coste,int alquiler);
+	public abstract Casilla nuevaNoEdificable(String nombre ,int coste,int beneficio);
+	public abstract Casilla nuevaImpuesto(String nombre);		
+	public abstract Casilla vacia(String nombre);
+	public abstract Casilla nuevaSuerte(String nombre);
+	public abstract Casilla nuevaCarcel(String nombre);
+	public abstract Casilla nuevaRecompensa(String nombre);
 		
-	protected:
-		FabricaTablero();
-	private:
-		static FabricaTablero _fabrica = 0;
 	
-	
+	private static FabricaTablero _fabrica = null;
+        protected FabricaTablero(){}         
 
 };
