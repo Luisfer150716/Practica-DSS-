@@ -1,11 +1,21 @@
+package monopolyclasico;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 public class GestorPartida{
-	private GestorPartida();
+	private static GestorPartida gestor = null;
 	public static GestorPartida instancia(){
-		if(_fabrica == 0){			
-				_fabrica = new FabricaTablero();	
+		if(gestor == null){			
+				gestor = new GestorPartida();	
 		}
 		
-		return _fabrica;
+		return gestor;
 		
 		
 	}
@@ -16,7 +26,7 @@ public class GestorPartida{
 		
 
 	}
-	public static Object cargarPartida(String nombre){
+	public static Object cargarPartida(String nombre) throws IOException, ClassNotFoundException{
 		try(ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(nombre)))){
 			return ois.readObject();
 		}
@@ -28,30 +38,32 @@ public class GestorPartida{
 		System.out.println("2.Cargar partida");
 		System.out.println("3.Salir");
 	}
-	public void configuraPartida(Partida partida){
+	public void configurarPartida(PartidaMonopoly partida){
+                Scanner sc = new Scanner(System.in);
+                int numJugadores = 0;
 		do{
 			System.out.println("Introduce numero de jugadores: ");
-			int numJugadores = sc.nextInt();
+			numJugadores = sc.nextInt();
 			if(numJugadores < 2 || numJugadores > 4)
 				System.out.println("Numero de jugadores incorrectos.");
 
-		} while(numJugadores < 2 || numJugadores > 4)
+		} while(numJugadores < 2 || numJugadores > 4);
 
 		
 		
 		for(int i=1; i<=numJugadores; i++){
 			System.out.println("Introduce nombre del Jugador "+i);
-			String nombre = sc.nextString();
+			String nombre = sc.next();
 			System.out.println("Introduce figura del Jugador "+i);
-			String figura = sc.nextString();
+			String figura = sc.next();
 			partida.anadirJugador(new Jugador(nombre, figura, 1, 500,i));
 						
 		}
-		int x = Math.floor(Math.random()*numJugadores);
+		int x = (int)Math.floor(Math.random()*numJugadores);
 
-		partida.setJugadorActual(partida.jugadores.elementAt(x));
+		partida.setJugadorActual(partida.getJugadores().elementAt(x));
 	}
-	public void desarrollaPartida(Partida partida){
+	public void desarrollaPartida(PartidaMonopoly partida){
 		boolean seJuega=true;
 		int turno = partida.getTurno();
 		//int jugador = partida.getTurnoJugador();
@@ -130,7 +142,6 @@ public class GestorPartida{
 		}
 		//FIN ALGORITMO PARTIDA
 	}
-	public void 
-
-
 }
+
+
