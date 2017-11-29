@@ -1,4 +1,5 @@
-
+package monopolyclasico;
+import java.util.Vector;
 public class Jugador{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
@@ -35,19 +36,19 @@ public class Jugador{
 	public int getDinero() {return this.dinero;}
 	public boolean getCarcel(){return this.estasCarcel;}
 	public int getId(){return this.id;}
-	public Propiedad[] getPropiedadesEdificables(){ return this.propiedadesEdificables;}
-	public Propiedad[] getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
+	public Vector<Propiedad> getPropiedadesEdificables(){ return this.propiedadesEdificables;}
+	public Vector<Propiedad> getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
 	public void setFigura(String figura) {this.figura = figura;}
 	public void setCasilla_actual(int casilla_actual) {this.casilla_actual = casilla_actual;}
 	public void setDinero(int dinero) { this.dinero = dinero;}
 	public void setId(int id){this.id=id;}
-	public void setCarcel(boolean){this.estasCarcel = estasCarcel;}
-	public void setPropiedadesEdificables(Propiedad[] propiedades) {this.propiedadesEdificables = propiedades;}
-	public void setPropiedadesNoEdificables(Propiedad[] propiedades) {this.propiedadesNoEdificables = propiedades;}
+	public void setCarcel(boolean estasCarcel){this.estasCarcel = estasCarcel;}
+	public void setPropiedadesEdificables(Vector<Propiedad> propiedades) {this.propiedadesEdificables = propiedades;}
+	public void setPropiedadesNoEdificables(Vector<Propiedad> propiedades) {this.propiedadesNoEdificables = propiedades;}
 	public void lanzarDados(){
-			int x = Math.floor(Math.random()*6+1);
-			int y = Math.floor(Math.random()*6+1);
+			int x = (int)Math.floor(Math.random()*6+1);
+			int y = (int)Math.floor(Math.random()*6+1);
 			System.out.println("Has sacado: "+ (x+y));
 
 			this.casilla_actual += (x+y);
@@ -74,29 +75,20 @@ public class Jugador{
 	public int consultarDinero(){
 		return getDinero();
 	}
-	public void mostrarPropiedades(){
-		System.out.println("Propiedades Edificables en tu posesion: ");
-		for(int i=0; i<propiedadesEdificables.size(); i++){
-			System.out.println("	"+i+" - Propiedad: "+propiedadesEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesEdificables.elementAt(i).getValor());
-		}
-		System.out.println("Propiedades No edificables en tu posesion: ")
-		for(int k=0; k<propiedadesNoEdificables.size();j++){
-			System.out.println("	"+k+" - Propiedad: "+propiedadesNoEdificables.elementAt(i).getNombre()+" - Valor: "+j.propiedadesNoEdificables.elementAt(i).getValor());
-		}
-	}
-	public void edificar(Propiedad p){
-		int i = 0; 
+
+	public void edificar(Edificable p){
+		
 		boolean encontrado = false;
 		
 		for(int i = 0 ; i < propiedadesEdificables.size();i++){
-			if(propiedadesEdificables.elementAt(i).getNombre() == p.getNombre){
+			if(propiedadesEdificables.elementAt(i).getNombre() == p.getNombre()){
 				propiedadesEdificables.add(i,p);
 				encontrado = true;
 			}
 		}
-		if(encontrada){
-			System.out.println("Se ha edificado correctamente, ahora el jugador"+this.getName()+" tiene "+p.getPisos()
-					   " en la propiedad "+p.getNombre());
+		if(encontrado){
+			System.out.println("Se ha edificado correctamente, ahora el jugador"+this.getNombre()+" tiene "+p.getPisos()+
+                                " en la propiedad "+p.getNombre());
 		}
 		else{
 			System.out.println("No se pudo edificar");
@@ -110,25 +102,25 @@ public class Jugador{
 		boolean colocada = false;
 		int i = 0;
 		while(!colocada || i >27){
-			if(propiedadesEdificables[i] == null){
-				propiedadesEdificables[i] = propiedad;
+			if(propiedadesEdificables.elementAt(i) == null){
+				propiedadesEdificables.add(i,propiedad) ;
 				colocada = true;
 			}
 			i++;
 		}
+        }
 		
 	public void anadirNoEdificable(NoEdificable propiedad){
 		boolean colocada = false;
 		int i = 0;
 		while(!colocada || i >27){
-			if(propiedadesNoEdificables[i] == null){
-				propiedadesNoEdificables[i] = propiedad;
+			if(propiedadesNoEdificables.elementAt(i) == null){
+				propiedadesNoEdificables.add(i,propiedad) ;
 				colocada = true;
 			}
 			i++;
 		}
-			
-	}
+        }
 	public void hipotecaPropiedad(boolean edificable,Jugador banca,int i){
 		if(edificable){
 			if(propiedadesEdificables.elementAt(i) != null){
