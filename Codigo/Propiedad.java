@@ -1,4 +1,5 @@
-public class Propiedad extends CasillaMonopoly{
+package monopolyclasico;
+public class Propiedad extends Casilla{
 
 	public int valor;
 	public Jugador dueño;
@@ -8,8 +9,11 @@ public class Propiedad extends CasillaMonopoly{
 		this.valor= valor;
 		this.dueño= null;
 	}
-	public void accion(Jugador j); //NO HACE NADA , SIEMPRE SE LLAMA A EDIFICABLE O NO EDIFICABLE
-	public getValor(){
+	public void accion(Jugador j){
+            System.out.println("Estas en la propiedad: "+this.getNombre());
+        }
+
+	public int getValor(){
 		return this.valor;	
 	}
 	public Jugador getDueño(){
