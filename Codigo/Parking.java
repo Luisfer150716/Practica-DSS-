@@ -1,4 +1,5 @@
-public class Parking extends CasillaMonopoly{
+package monopolyclasico;
+public class Parking extends Casilla{
 	int bote;
 
 	public Parking(String nombre){
