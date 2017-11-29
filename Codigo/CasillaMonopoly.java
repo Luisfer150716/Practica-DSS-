@@ -1,14 +1,19 @@
-public class CasillaMonopoly{
+package monopolyclasico;
+public class Casilla{
 
 	String nombre;
 	int id;
 	
-	public CasillaMonopoly(String nombre){
+	public Casilla(String nombre){
 		this.nombre = nombre;
 	}
 	
 	public String getNombre(){
 		return this.nombre;
 	}
-	public void accion(Jugador j);
+        
+	public void accion(Jugador j){
+            
+        }
 }
+
