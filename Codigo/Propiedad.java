@@ -2,12 +2,12 @@ package monopolyclasico;
 public class Propiedad extends Casilla{
 
 	public int valor;
-	public Jugador dueño;
+	public Jugador duenno;
 	
 	public Propiedad(String nombre, int valor){
 		super(nombre);
 		this.valor= valor;
-		this.dueño= null;
+		this.duenno= null;
 	}
 	public void accion(Jugador j){
             System.out.println("Estas en la propiedad: "+this.getNombre());
@@ -16,10 +16,10 @@ public class Propiedad extends Casilla{
 	public int getValor(){
 		return this.valor;	
 	}
-	public Jugador getDueño(){
-		return this.dueño;	
+	public Jugador getDuenno(){
+		return this.duenno;	
 	}
-	public void setDueño(Jugador j){
-		this.dueño = j;	
+	public void setDuenno(Jugador j){
+		this.duenno = j;	
 	}
 }

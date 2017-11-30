@@ -5,8 +5,8 @@ public class Jugador{
 	private int casilla_actual, dinero;
 	private int id;
 	private boolean estasCarcel;
-	private Vector<Propiedad> propiedadesEdificables; 
-	private Vector<Propiedad> propiedadesNoEdificables; 
+	private Vector<Edificable> propiedadesEdificables; 
+	private Vector<NoEdificable> propiedadesNoEdificables; 
 
 	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id){
 		this.nombre = nombre;
@@ -36,16 +36,16 @@ public class Jugador{
 	public int getDinero() {return this.dinero;}
 	public boolean getCarcel(){return this.estasCarcel;}
 	public int getId(){return this.id;}
-	public Vector<Propiedad> getPropiedadesEdificables(){ return this.propiedadesEdificables;}
-	public Vector<Propiedad> getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
+	public Vector<Edificable> getPropiedadesEdificables(){ return this.propiedadesEdificables;}
+	public Vector<NoEdificable> getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
 	public void setFigura(String figura) {this.figura = figura;}
 	public void setCasilla_actual(int casilla_actual) {this.casilla_actual = casilla_actual;}
 	public void setDinero(int dinero) { this.dinero = dinero;}
 	public void setId(int id){this.id=id;}
 	public void setCarcel(boolean estasCarcel){this.estasCarcel = estasCarcel;}
-	public void setPropiedadesEdificables(Vector<Propiedad> propiedades) {this.propiedadesEdificables = propiedades;}
-	public void setPropiedadesNoEdificables(Vector<Propiedad> propiedades) {this.propiedadesNoEdificables = propiedades;}
+	public void setPropiedadesEdificables(Vector<Edificable> propiedades) {this.propiedadesEdificables = propiedades;}
+	public void setPropiedadesNoEdificables(Vector<NoEdificable> propiedades) {this.propiedadesNoEdificables = propiedades;}
 	public void lanzarDados(){
 			int x = (int)Math.floor(Math.random()*6+1);
 			int y = (int)Math.floor(Math.random()*6+1);
@@ -54,20 +54,22 @@ public class Jugador{
 			this.casilla_actual += (x+y);
 	}
 
-	public void comprarPropiedad(Propiedad p){
+	public void comprarPropiedadNoEdificable(NoEdificable p){
 		//NO EDIFICABLES		
 		if(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 16 || casilla_actual == 26 || 
 			casilla_actual == 29 || casilla_actual == 36)
 			if(p.getValor() <= dinero)
-				propiedadesNoEdificables.add(casilla_actual);
+				propiedadesNoEdificables.add(p);
 			else System.out.println("No tienes suficiente dinero.");
-		//EDIFICABLES
-		else 
-			if(p.getValor() <= dinero)
-				propiedadesEdificables.add(casilla_actual);
-			else System.out.println("No tienes suficiente dinero.");
+	}
 
-		
+	public void comprarPropiedadEdificable(Edificable p){
+		//EDIFICABLES
+		if(!(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 16 || casilla_actual == 26 || 
+			casilla_actual == 29 || casilla_actual == 36))
+			if(p.getValor() <= dinero)
+				propiedadesEdificables.add(p);
+			else System.out.println("No tienes suficiente dinero.");		
 
 	}
 
@@ -134,7 +136,7 @@ public class Jugador{
 			if(propiedadesNoEdificables.elementAt(i) != null){
 				this.dinero = this.dinero + propiedadesNoEdificables.elementAt(i).getValor();
 				System.out.println("Ya no posees la propiedad "+propiedadesNoEdificables.elementAt(i).getNombre());
-				banca.anadirEdificable(propiedadesNoEdificables.elementAt(i));
+				banca.anadirNoEdificable(propiedadesNoEdificables.elementAt(i));
 				propiedadesNoEdificables.remove(i);
 			}
 		}

@@ -14,7 +14,7 @@ public class Impuesto extends Casilla{
         }
 
         public void setCantidad(int c){this.cantidad = c;}
-        public void getCantidad(){return this.cantidad;}
+        public int getCantidad(){return this.cantidad;}
 
    
 }

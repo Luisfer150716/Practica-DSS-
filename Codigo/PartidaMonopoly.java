@@ -10,7 +10,7 @@ class PartidaMonopoly implements Serializable{
 	private Jugador jugadorActual;
 	private int num_jugadores;
 	private Vector<Jugador> jugadores; //maximo 4 jugadores;
-	private static Casilla[] tablero = new Casilla[40];
+	public static Casilla[] tablero = new Casilla[40];
 	private long duracionPartida ;
         FabricaTablero fabricaMonopoly;
 
@@ -34,7 +34,7 @@ class PartidaMonopoly implements Serializable{
 		tablero[9] = fabricaMonopoly.nuevaEdificable("Calle Bravo Murillo",120,40);
 		tablero[10] = fabricaMonopoly.nuevaCarcel("Carcel");
 		tablero[11] = fabricaMonopoly.nuevaEdificable("Glorieta de Bilbao",140,50);
-		tablero[12] = fabricaMonopoly.nuevaNoEdificable("Compañia de electricidad",150,50);
+		tablero[12] = fabricaMonopoly.nuevaNoEdificable("Compannia de electricidad",150,50);
 		tablero[13] = fabricaMonopoly.nuevaEdificable("Calle Alberto Aguilera",140,60);
 		tablero[14] = fabricaMonopoly.nuevaEdificable("Calle Fuencarral",160,80);
 		tablero[15] = fabricaMonopoly.nuevaNoEdificable("Estacion de las Delicias",200,50);
@@ -50,8 +50,8 @@ class PartidaMonopoly implements Serializable{
 		tablero[25] = fabricaMonopoly.nuevaNoEdificable("Estacion de Mediodia",200,50);
 		tablero[26] = fabricaMonopoly.nuevaEdificable("Avenida de los Reyes Catolicos",260,150);
 		tablero[27] = fabricaMonopoly.nuevaEdificable("Calle Bailen",260,160);
-		tablero[28] = fabricaMonopoly.nuevaNoEdificable("Compañia de agua",150,50);
-		tablero[29] = fabricaMonopoly.nuevaEdificable("Plaza de España",260,170);
+		tablero[28] = fabricaMonopoly.nuevaNoEdificable("Compannia de agua",150,50);
+		tablero[29] = fabricaMonopoly.nuevaEdificable("Plaza de Espanna",260,170);
 		tablero[30] = fabricaMonopoly.vacia("Ve a la carcel");
 		tablero[31] = fabricaMonopoly.nuevaEdificable("Puerta del Sol",300,180);
 		tablero[32] = fabricaMonopoly.nuevaEdificable("Calle Alcala",300,190);
@@ -68,8 +68,8 @@ class PartidaMonopoly implements Serializable{
 		this.duracionPartida = d;
 		return this;
 	}
-	public Partida partida(){
-		return new Partida(this);
+	public PartidaMonopoly partida(){
+		return new PartidaMonopoly(fabricaMonopoly);
 	}
 
 	public int getTurno(){
@@ -116,6 +116,9 @@ class PartidaMonopoly implements Serializable{
 		}
 	}
 	
+	public Vector<Jugador> getJugadores(){
+		return this.jugadores;
+	}
 	
 	
 }

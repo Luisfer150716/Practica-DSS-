@@ -64,16 +64,17 @@ public class GestorPartida{
 		partida.setJugadorActual(partida.getJugadores().elementAt(x));
 	}
 	public void desarrollaPartida(PartidaMonopoly partida){
+		Scanner sc = new Scanner(System.in);
 		boolean seJuega=true;
 		int turno = partida.getTurno();
 		//int jugador = partida.getTurnoJugador();
-		Jugador banca(banca, null, null, 999999);
+		Jugador banca = new Jugador("banca", null, 0, 999999, 10);
 		while(seJuega){
 			System.out.println("Es el turno "+turno);
 			Jugador jugadorActual = partida.getJugadorActual();
 			if(jugadorActual.getCarcel())
 			{
-				tablero[10].accion(jugadorActual);
+				partida.tablero[10].accion(jugadorActual);
 			}
 			else
 			{
@@ -90,9 +91,9 @@ public class GestorPartida{
 				}
 
 				else{
-					if(jugadorActual.getEdificables.isEmpty() && jugadorActual.getNoEdificables.isEmpty()
-						|| jugadorActual.bienes() + jugadorActual.getDinero() < 0){
-						partida.eliminarJugador(jugadorActual);
+					if(jugadorActual. getPropiedadesEdificables().isEmpty() && jugadorActual. getPropiedadesNoEdificables().isEmpty()
+						||  jugadorActual.getDinero() < 0){
+						partida.eliminarJugador(jugadorActual.getId());
 						if(partida.getJugadores().size() == 1){
 							seJuega = false;
 							System.out.println("Solo queda un jugador, partida finalizada!");
@@ -106,7 +107,7 @@ public class GestorPartida{
 							System.out.println("Introduce 1 para hipotecar edificables, 2 para no edificables");
 							int op = sc.nextInt();
 							if(op == 1){
-								if(!jugadorActual.getEdificables.isEmpty()){
+								if(!jugadorActual.getPropiedadesEdificables().isEmpty()){
 									System.out.println("Introduce el numero de la propiedad edificable que quieras eliminar");
 									int pr = sc.nextInt();
 									jugadorActual.hipotecaPropiedad(true,banca,pr);	
@@ -117,7 +118,7 @@ public class GestorPartida{
 								}
 								
 							}else{
-								if(!jugadorActual.getNoEdificables().isEmpty()){
+								if(!jugadorActual.getPropiedadesNoEdificables().isEmpty()){
 									System.out.println("Introduce el numero de la propiedad no edificable que quieras eliminar");
 									int pr = sc.nextInt();
 									jugadorActual.hipotecaPropiedad(false,banca,pr);	
@@ -127,7 +128,7 @@ public class GestorPartida{
 								}
 								
 							}
-							if(jugadorActual.bienes() + jugadorActual.getDinero() >= 0){
+							if(jugadorActual.getDinero() >= 0){
 								deudaPagada = true;
 							}
 						}

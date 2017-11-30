@@ -7,10 +7,11 @@ package monopolyclasico;
 import java.io.IOException;
 import java.util.Scanner;
 
-
+public class main{
     public static void main(String[] args) throws IOException, ClassNotFoundException {
             FabricaTablero fabrica = FabricaTablero.instancia("FabricaMonopolyClasico");
-            GestorPartida gestor = GestorPartida.instancia();
+            GestorPartida gestor =  GestorPartida.instancia();
+            //GestorPartida gestor = gestor.instancia();
             gestor.muestraMenuInicial();
             Scanner sc = new Scanner(System.in);
             int opcion = sc.nextInt();
@@ -37,6 +38,6 @@ import java.util.Scanner;
             }
     }
 
-
+}
     
 

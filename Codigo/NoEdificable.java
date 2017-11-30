@@ -3,25 +3,25 @@ import java.util.Scanner;
 
 public class NoEdificable extends Propiedad{
 	
-	boolean tieneDueño;
+	boolean tieneDuenno;
 	int pago;
 
 	public NoEdificable(String nombre, int valor, int pago){
 		super(nombre, valor);
 		this.pago = pago;
-		this.tieneDueño = false;
+		this.tieneDuenno = false;
 	}
 	
 	public void accion(Jugador j){
 		Scanner sc = new Scanner(System.in);
 		
-		if(!tieneDueño){
+		if(!tieneDuenno){
 			if(j.getDinero() >= this.valor){
-				System.out.println("Esta propiedad no edificable tiene dueño, quieres comprarla? 1.-Si/ 2.-No");
+				System.out.println("Esta propiedad no edificable tiene duenno, quieres comprarla? 1.-Si/ 2.-No");
 				int compra= sc.nextInt();
 				if(compra == 1){
-					this.tieneDueño= true;
-					setDueño(j);
+					this.tieneDuenno= true;
+					setDuenno(j);
 					j.anadirNoEdificable(this);
 				}
 				else{
@@ -30,10 +30,10 @@ public class NoEdificable extends Propiedad{
 			}
 		}
 		else{
-			if(getDueño().getId()!=j.getId()){
-				System.out.println("Tienes que pagar "+pago+" a "+getDueño().getNombre());
+			if(getDuenno().getId()!=j.getId()){
+				System.out.println("Tienes que pagar "+pago+" a "+getDuenno().getNombre());
 				j.setDinero(j.getDinero()-pago);
-				getDueño().setDinero(j.getDinero()+pago);
+				getDuenno().setDinero(j.getDinero()+pago);
 			}
 			else{
 				System.out.println("Esta propiedad no edificable es tuya!");
