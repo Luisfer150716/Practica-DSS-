@@ -32,6 +32,8 @@ public class Edificable extends Propiedad{
 					System.out.println("Decides no comprarla!");
 				}
 				
+			}else{
+				System.out.println("No tienes dinero para comprar esta propiedad");
 			}
 		}
 		
