@@ -53,7 +53,9 @@ public class Jugador{
 
 			this.casilla_actual += (x+y);
 	}
-
+	
+	/*No hacemos uso de estos metodos
+	
 	public void comprarPropiedadNoEdificable(NoEdificable p){
 		//NO EDIFICABLES		
 		if(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 16 || casilla_actual == 26 || 
@@ -72,7 +74,7 @@ public class Jugador{
 			else System.out.println("No tienes suficiente dinero.");		
 
 	}
-
+	*/
 
 	public int consultarDinero(){
 		return getDinero();
