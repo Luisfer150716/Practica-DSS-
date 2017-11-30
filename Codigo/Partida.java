@@ -21,3 +21,4 @@ class Partida{
 	public long duracionPartida(){return this.duracionPartida;}
 	public long tiempoTranscurrido(){return  //implementar tiempo actual - tiempo inicio;}
 };
+*/
