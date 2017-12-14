@@ -49,18 +49,18 @@ public class GestorPartida{
 
 		} while(numJugadores < 2 || numJugadores > 4);
 
-		
+		partida.setNumJugadores(numJugadores);
 		
 		for(int i=1; i<=numJugadores; i++){
 			System.out.println("Introduce nombre del Jugador "+i);
 			String nombre = sc.next();
 			System.out.println("Introduce figura del Jugador "+i);
 			String figura = sc.next();
-			partida.anadirJugador(new Jugador(nombre, figura, 1, 500,i));
+			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i));
 						
 		}
-		int x = (int)Math.floor(Math.random()*numJugadores);
-
+		int x = (int)Math.floor(Math.random()*(numJugadores));
+                System.out.println("numero aleatorio es "+x);
 		partida.setJugadorActual(partida.getJugadores().elementAt(x));
 	}
 	public void desarrollaPartida(PartidaMonopoly partida){
@@ -82,6 +82,7 @@ public class GestorPartida{
 				jugadorActual.mostrarEstado();
 				jugadorActual.lanzarDados();
 				System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasilla_actual());
+                                System.out.println(partida.tablero[jugadorActual.getCasilla_actual()].getNombre());
 				partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual);
 				
 
@@ -93,7 +94,7 @@ public class GestorPartida{
 				else{
 					if(jugadorActual. getPropiedadesEdificables().isEmpty() && jugadorActual. getPropiedadesNoEdificables().isEmpty()
 						||  jugadorActual.getDinero() < 0){
-						partida.eliminarJugador(jugadorActual.getId());
+						partida.eliminarJugador(jugadorActual.getId(),"No tienes dinero ni propiedades");
 						if(partida.getJugadores().size() == 1){
 							seJuega = false;
 							System.out.println("Solo queda un jugador, partida finalizada!");
