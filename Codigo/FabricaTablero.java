@@ -1,9 +1,12 @@
 package monopolyclasico;
 
 public abstract class FabricaTablero{
+	
+	public static final String FABRICA_TABLERO_MONOPOLY = "FabricaTableroMonopoly";
+	
 	public static FabricaTablero instancia(String fabrica){
 		if(_fabrica == null){
-			if(fabrica == "FabricaTableroMonopoly"){
+			if(fabrica == FABRICA_TABLERO_MONOPOLY){
 				_fabrica = new FabricaMonopolyClasico();	
 			}
 			
