@@ -5,8 +5,8 @@ public class Jugador{
 	private int casilla_actual, dinero;
 	private int id;
 	private boolean estasCarcel;
-	private Vector<Edificable> propiedadesEdificables; 
-	private Vector<NoEdificable> propiedadesNoEdificables; 
+	private Vector<Edificable> propiedadesEdificables = new Vector<Edificable>(); 
+	private Vector<NoEdificable> propiedadesNoEdificables = new Vector<NoEdificable>();
 
 	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id){
 		this.nombre = nombre;
