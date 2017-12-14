@@ -9,20 +9,22 @@ class PartidaMonopoly implements Serializable{
 	private int turnoJugador;
 	private Jugador jugadorActual;
 	private int num_jugadores;
-	private Vector<Jugador> jugadores; //maximo 4 jugadores;
+        private int num_jugadores_actual = 0;
+	private static Vector<Jugador> jugadores = new Vector<Jugador>(); //maximo 4 jugadores;
 	public static Casilla[] tablero = new Casilla[40];
 	private long duracionPartida ;
         FabricaTablero fabricaMonopoly;
 
 	public PartidaMonopoly(FabricaTablero f){
 		turnoActual = 1;
-		this.construyeTablero();
                 this.fabricaMonopoly = f;
+		this.construyeTablero();
+               
 		
 	}
 	public void construyeTablero(){
 		
-		tablero[0] = fabricaMonopoly.vacia("Salida");
+		tablero[0] = new Casilla("Salida");
 		tablero[1] = fabricaMonopoly.nuevaEdificable("Ronda de valencia",60,10);
 		tablero[2] = fabricaMonopoly.nuevaSuerte("Caja de comunidad 1");
 		tablero[3] = fabricaMonopoly.nuevaEdificable("Plaza lavapies",60,15);
@@ -77,15 +79,16 @@ class PartidaMonopoly implements Serializable{
 	}
 
 	public void anadirJugador(Jugador j){
-		for(int i = 0 ; i < num_jugadores;i++){
-			if(jugadores.elementAt(i) == null){
-				jugadores.add(i,j) ;
-				
-			}
-		}
+            jugadores.add(this.num_jugadores_actual,j);
+            this.num_jugadores_actual++;
+            
+		                    
+		
 		
 	}
-	public void eliminarJugador(int i){
+	public void eliminarJugador(int i,String motivo){
+                System.out.println("El jugador "+i+" ha sido eliminado de la partida");
+                System.out.println(motivo);
 		jugadores.remove(i);
 	}
 	public void setJugadorActual(Jugador j){
@@ -119,6 +122,19 @@ class PartidaMonopoly implements Serializable{
 	public Vector<Jugador> getJugadores(){
 		return this.jugadores;
 	}
+        public void setNumJugadores(int x){
+            this.num_jugadores = x;
+        }
 	
+        public boolean sigueJugando(Jugador j,int multa){
+            if(j.getPropiedadesEdificables().isEmpty() && 
+               j.getPropiedadesNoEdificables().isEmpty() && 
+               j.getDinero()- multa < 0){
+                
+                return false;
+                
+            }
+            return true;
+        }
 	
 }
