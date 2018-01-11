@@ -1,5 +1,9 @@
 package monopolyclasico;
 public class FabricaMonopolyClasico extends FabricaTablero{
+        
+        FabricaMonopolyClasico(){}          
+        
+    
 	public Casilla vacia(String nombre){
 		return new Casilla(nombre);	
 	}

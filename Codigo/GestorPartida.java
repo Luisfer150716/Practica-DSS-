@@ -86,7 +86,7 @@ public class GestorPartida{
 				partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual);
 				
 
-				if(jugadorActual.getDinero()>0){	
+				if(jugadorActual.getDinero() >=0){	
 					partida.siguienteTurno();
 										
 				}
