@@ -102,38 +102,10 @@ public class GestorPartida{
 						}
 						
 					}
-					else{
-						boolean deudaPagada = false;
-						while(!deudaPagada){
-							jugadorActual.mostrarPropiedades();
-							System.out.println("Introduce 1 para hipotecar edificables, 2 para no edificables");
-							int op = sc.nextInt();
-							if(op == 1){
-								if(!jugadorActual.getPropiedadesEdificables().isEmpty()){
-									System.out.println("Introduce el numero de la propiedad edificable que quieras eliminar");
-									int pr = sc.nextInt();
-									jugadorActual.hipotecaPropiedad(true,banca,pr);	
-									
-								}
-								else{
-									System.out.println("No tienes propiedades edificables!");
-								}
-								
-							}else{
-								if(!jugadorActual.getPropiedadesNoEdificables().isEmpty()){
-									System.out.println("Introduce el numero de la propiedad no edificable que quieras eliminar");
-									int pr = sc.nextInt();
-									jugadorActual.hipotecaPropiedad(false,banca,pr);	
-								}
-								else{
-									System.out.println("No tienes propiedades no edificables!");
-								}
-								
-							}
-							if(jugadorActual.getDinero() >= 0){
-								deudaPagada = true;
-							}
-						}
+					else
+					{
+						jugadorActual.pagaDeuda();
+					}
 
 						partida.siguienteTurno();
 					}
