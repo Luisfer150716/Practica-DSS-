@@ -12,7 +12,7 @@ public class Casilla{
 		return this.nombre;
 	}
         
-	public void accion(Jugador j){
+	public void accion(Jugador j, PartidaMonopoly p){
             
         }
 }
