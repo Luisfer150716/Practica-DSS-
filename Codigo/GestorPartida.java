@@ -18,17 +18,21 @@ public class GestorPartida{
 		
 	}
 	public static void guardarPartida(Serializable datos,String nombre)throws Exception{
-		try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(nombre)))){
+		/*try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(nombre)))){
 			oos.writeObject(datos);
-		}
+		}*/
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Paths.get(nombre)));
+		oos.writeObject(datos);
+		oos.close();
 		
 
 	}
 	public static Object cargarPartida(String nombre) throws IOException, ClassNotFoundException{
-		try(ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(nombre)))){
+		/*try(ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(nombre)))){
 			return ois.readObject();
-		}
-
+		}*/
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Paths.get(nombre)));
+		return ois.readObject();
 	}
 	public void muestraMenuInicial(){
 		System.out.println("Elige opcion: ");
