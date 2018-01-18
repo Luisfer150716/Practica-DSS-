@@ -171,4 +171,39 @@ public class Jugador{
 			System.out.println("Casilla no encontrada, no se puede borrar");
 		}
 	}
+	
+	public void pagaDeuda(){
+            Scanner sc = new Scanner(System.in);
+            boolean deudaPagada = false;
+            while(!deudaPagada){
+                mostrarPropiedades();
+                System.out.println("Introduce 1 para hipotecar edificables, 2 para no edificables");
+                int op = sc.nextInt();
+                if(op == 1){
+                        if(!getPropiedadesEdificables().isEmpty()){
+                                System.out.println("Introduce el numero de la propiedad edificable que quieras eliminar");
+                                int pr = sc.nextInt();
+                                hipotecaPropiedad(true,pr);	
+
+                        }
+                        else{
+                                System.out.println("No tienes propiedades edificables!");
+                        }
+
+                }else{
+                        if(!getPropiedadesNoEdificables().isEmpty()){
+                                System.out.println("Introduce el numero de la propiedad no edificable que quieras eliminar");
+                                int pr = sc.nextInt();
+                                hipotecaPropiedad(false,pr);	
+                        }
+                        else{
+                                System.out.println("No tienes propiedades no edificables!");
+                        }
+
+                }
+                if(getDinero() >= 0){
+                        deudaPagada = true;
+                }
+            }
+        }
 }
