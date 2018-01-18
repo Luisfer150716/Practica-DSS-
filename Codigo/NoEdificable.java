@@ -12,7 +12,7 @@ public class NoEdificable extends Propiedad{
 		this.tieneDueño = false;
 	}
 	
-	public void accion(Jugador j){
+	public void accion(Jugador j, PartidaMonopoly p){
 		Scanner sc = new Scanner(System.in);
 		
 		if(!tieneDueño){
