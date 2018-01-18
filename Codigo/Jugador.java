@@ -59,6 +59,20 @@ public class Jugador{
 
 	}
 	
+	public int sumaValorPropiedades(){
+		int suma= 0;
+
+		for(int i=0; i<propiedadesEdificables.size();i++){
+			suma+= propiedadesEdificables.elementAt(i).getValor();
+		}
+
+		for(int i=0; i<propiedadesEdificables.size();i++){
+			suma+= propiedadesNoEdificables.elementAt(i).getValor();
+		}
+
+		return suma;
+	}
+	
 	/*No hacemos uso de estos metodos
 	
 	public void comprarPropiedadNoEdificable(NoEdificable p){
