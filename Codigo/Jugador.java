@@ -1,4 +1,3 @@
-package monopolyclasico;
 import java.util.Vector;
 public class Jugador{
 	private String nombre, figura;
@@ -22,12 +21,13 @@ public class Jugador{
 		
 	}
 	public void mostrarPropiedades(){
+		System.out.println("Propiedades edificables: ");
 		for(int j = 0; j <this.propiedadesEdificables.size(); j++){
-			System.out.println(this.propiedadesEdificables.elementAt(j).getNombre());
+			System.out.println(j+": "+this.propiedadesEdificables.elementAt(j).getNombre());
 		}
 		System.out.println("Propiedades no edificables: ");
 		for(int j = 0; j <this.propiedadesNoEdificables.size(); j++){
-			System.out.println(this.propiedadesNoEdificables.elementAt(j).getNombre());
+			System.out.println(j+": "+this.propiedadesNoEdificables.elementAt(j).getNombre());
 		}
 	}
 	public String getNombre() {return this.nombre;}
@@ -51,7 +51,12 @@ public class Jugador{
 			int y = (int)Math.floor(Math.random()*6+1);
 			System.out.println("Has sacado: "+ (x+y));
 
-			this.casilla_actual += (x+y);
+			if(this.casilla_actual+(x+y)>39){
+				this.dinero+=200;
+			}
+
+			this.casilla_actual = (this.casilla_actual +(x+y))%39;
+
 	}
 	
 	/*No hacemos uso de estos metodos
@@ -80,51 +85,33 @@ public class Jugador{
 		return getDinero();
 	}
 
-	public void edificar(Edificable p){
+	public void edificar(Edificable p, int pisos){
 		
 		boolean encontrado = false;
 		
 		for(int i = 0 ; i < propiedadesEdificables.size();i++){
 			if(propiedadesEdificables.elementAt(i).getNombre() == p.getNombre()){
-				propiedadesEdificables.add(i,p);
+				propiedadesEdificables.elementAt(i).setPisos(pisos);
 				encontrado = true;
 			}
 		}
 		if(encontrado){
-			System.out.println("Se ha edificado correctamente, ahora el jugador"+this.getNombre()+" tiene "+p.getPisos()+
-                                " en la propiedad "+p.getNombre());
+			System.out.println("Se ha edificado correctamente, ahora el jugador "+this.getNombre()+" tiene "+p.getPisos()+
+                                " pisos en la propiedad "+p.getNombre());
 		}
 		else{
 			System.out.println("No se pudo edificar");
-		}
-			
-
-		
-		
+		}	
 	}
+
 	public void anadirEdificable(Edificable propiedad){
-		boolean colocada = false;
-		int i = 0;
-		while(!colocada || i >27){
-			if(propiedadesEdificables.elementAt(i) == null){
-				propiedadesEdificables.add(i,propiedad) ;
-				colocada = true;
-			}
-			i++;
-		}
-        }
+		propiedadesEdificables.add(propiedad);
+    }
 		
 	public void anadirNoEdificable(NoEdificable propiedad){
-		boolean colocada = false;
-		int i = 0;
-		while(!colocada || i >27){
-			if(propiedadesNoEdificables.elementAt(i) == null){
-				propiedadesNoEdificables.add(i,propiedad) ;
-				colocada = true;
-			}
-			i++;
-		}
-        }
+		propiedadesNoEdificables.add(propiedad);
+    }
+
 	public void hipotecaPropiedad(boolean edificable,Jugador banca,int i){
 		if(edificable){
 			if(propiedadesEdificables.elementAt(i) != null){
@@ -143,24 +130,31 @@ public class Jugador{
 			}
 		}
 	}
-	public void borrarEdificable(int i){
-		if(propiedadesEdificables.elementAt(i) == null){
-			System.out.println("No existe dicho  edificable");
+	public void borrarEdificable(String nombreCasilla){
+		boolean encontrado = false;
+		for(int i= 0; i<propiedadesEdificables.size(); i++){
+			if(propiedadesEdificables.elementAt(i).getNombre().equals(nombreCasilla)){
+				propiedadesEdificables.remove(i);
+				System.out.println("Casilla "+nombreCasilla+" en posesion de la banca");
+				encontrado = true;
+			}
 		}
-		else{
-
-			propiedadesEdificables.remove(i);
-			System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
+		if(!encontrado){
+			System.out.println("Casilla no encontrada, no se puede borrar");
 		}
 	}
-	public void borrarNoEdificable(int i){
-		if(propiedadesNoEdificables.elementAt(i) == null){
-			System.out.println("No existe dicho no edificable");
+
+	public void borrarNoEdificable(String nombreCasilla){
+		boolean encontrado = false;
+		for(int i= 0; i<propiedadesNoEdificables.size(); i++){
+			if(propiedadesNoEdificables.elementAt(i).getNombre().equals(nombreCasilla)){
+				propiedadesNoEdificables.remove(i);
+				System.out.println("Casilla "+nombreCasilla+" en posesion de la banca");
+				encontrado = true;
+			}
 		}
-		else{
-			propiedadesNoEdificables.remove(i);
-			System.out.println("Propiedad eliminada. Ahora esta en posesion de la banca");
+		if(!encontrado){
+			System.out.println("Casilla no encontrada, no se puede borrar");
 		}
-		
 	}
 }
