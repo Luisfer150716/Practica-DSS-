@@ -16,7 +16,7 @@ public class Edificable extends Propiedad{
 	public int getPisos(){
 		return n_casas;	
 	}
-	public void accion(Jugador j){
+	public void accion(Jugador j, PartidaMonopoly p){
                
             if(!tieneDueño){
 			if(j.getDinero() >= this.valor){
