@@ -15,7 +15,7 @@ public class Parking extends Casilla{
 		this.bote += dinero;
 	}
 	
-	public void accion(Jugador j){		
+	public void accion(Jugador j, PartidaMonopoly p){		
 		j.setDinero(j.getDinero()+bote);
 		bote=0;
 	}
