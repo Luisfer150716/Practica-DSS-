@@ -1,5 +1,3 @@
-package monopolyclasico;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -70,11 +68,13 @@ public class GestorPartida{
 		//int jugador = partida.getTurnoJugador();
 		Jugador banca = new Jugador("banca", null, 0, 999999, 10);
 		while(seJuega){
+			turno= partida.getTurno();
 			System.out.println("Es el turno "+turno);
+			partida.siguienteTurnoPartida();
 			Jugador jugadorActual = partida.getJugadorActual();
 			if(jugadorActual.getCarcel())
 			{
-				partida.tablero[10].accion(jugadorActual);
+				partida.tablero[10].accion(jugadorActual, partida);
 			}
 			else
 			{
@@ -83,7 +83,7 @@ public class GestorPartida{
 				jugadorActual.lanzarDados();
 				System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasilla_actual());
                                 System.out.println(partida.tablero[jugadorActual.getCasilla_actual()].getNombre());
-				partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual);
+				partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual, partida);
 				
 
 				if(jugadorActual.getDinero() >=0){	
@@ -92,12 +92,13 @@ public class GestorPartida{
 				}
 
 				else{
-					if(jugadorActual. getPropiedadesEdificables().isEmpty() && jugadorActual. getPropiedadesNoEdificables().isEmpty()
-						||  jugadorActual.getDinero() < 0){
+					if(jugadorActual.getPropiedadesEdificables().isEmpty() && jugadorActual.getPropiedadesNoEdificables().isEmpty()){
 						partida.eliminarJugador(jugadorActual.getId(),"No tienes dinero ni propiedades");
 						if(partida.getJugadores().size() == 1){
 							seJuega = false;
-							System.out.println("Solo queda un jugador, partida finalizada!");
+							System.out.println("Solo queda un jugador");
+							partida.siguienteTurnoPartida();
+							System.out.println("Ha ganado el jugador "+partida.getJugadores().firstElement().getNombre()+", partida finalizada!");
 						}
 						
 					}
