@@ -21,31 +21,40 @@ public class Suerte extends Casilla{
 		if(a==1){
                         
                         int mueve = casillasAleatorio();
-                        if(j.getCasilla_actual() + mueve < 0){
-                            System.out.println("Te mueves a la casilla 0");
-                            j.setCasilla_actual(0);
+                        System.out.println("Te mueves"+mueve+" casillas");
+                        int siguienteCasilla = j.getCasilla_actual() + mueve;
+                        if(siguienteCasilla < 0){
+                            int casillaFinal = 39 + siguienteCasilla;
+                            System.out.println("Ahora estás en la casilla "+casillaFinal);
+                            j.setCasilla_actual(casillaFinal);
                         }
-                        else{
-                            
-                        
-                        System.out.println("Te mueves "+mueve+" casillas");
-			j.setCasilla_actual(j.getCasilla_actual()+mueve);
+                        else{                     
+                            j.setCasilla_actual(siguienteCasilla);
                         }
 		}
 		else{
                         int dinero = dineroAleatorio();
-                        if(j.getDinero() + dinero < 0){
-                            if(p.sigueJugando(j,dinero) == false){
+                        j.setDinero(j.getDinero() + dinero);
+                        if(j.getDinero() < 0){
+                            System.out.println("Recibes una multa de "+dinero);
+                            System.out.println("Tienes una deuda de "+j.getDinero());
+                            if(p.sigueJugando(j) == false){
                                 p.eliminarJugador(j.getId(),"No tienes dinero ni propiedades que hipotecar");
                             }
                             else{
-                                //sumar valor todas propiedades
-                                //comprobar suma > deuda
-                                // si suma < deuda eliminar jugador
-                                //si no empezar a hipotecar hasta pagar deuda
+                                int valorEdificables = j.sumaValorPropiedades();
+                                if((valorEdificables + j.getDinero()) < 0){
+                                    p.eliminarJugador(j.getId(),"El valor de tus propiedades no es suficiente para pagar tus deudas");
+                                }
+                                else{
+                                    j.pagaDeuda();
+                                    System.out.println("Te has quedado con "+j.getDinero()+" de dinero y con las siguientes propiedades: ");
+                                    j.mostrarPropiedades();
+                                }
+                             
                             }
                         }else{
-                            System.out.println("Recibes/pierdes "+dinero+" dinero");
+                            System.out.println("Te toca la lotería, has ganado "+dinero);
                             j.setDinero(j.getDinero() + dinero);
                         }
                        
