@@ -9,7 +9,7 @@ public class Propiedad extends Casilla{
 		this.valor= valor;
 		this.dueño= null;
 	}
-	public void accion(Jugador j){
+	public void accion(Jugador j, PartidaMonopoly p){
             System.out.println("Estas en la propiedad: "+this.getNombre());
         }
 
