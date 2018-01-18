@@ -1,4 +1,5 @@
 import java.util.Vector;
+import java.util.Scanner;
 public class Jugador{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
