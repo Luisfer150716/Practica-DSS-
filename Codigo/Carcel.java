@@ -10,7 +10,7 @@ public class Carcel extends Casilla{
                 }
 		
 	}
-	public void accion(Jugador j){
+	public void accion(Jugador j, PartidaMonopoly p){
 		if(!j.getCarcel()){
 			System.out.println("Estas de visita!!");	
 		}
