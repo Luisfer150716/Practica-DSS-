@@ -127,21 +127,21 @@ public class Jugador{
 		propiedadesNoEdificables.add(propiedad);
     }
 
-	public void hipotecaPropiedad(boolean edificable,Jugador banca,int i){
+	public void hipotecaPropiedad(boolean edificable,int i){
 		if(edificable){
 			if(propiedadesEdificables.elementAt(i) != null){
 				this.dinero = this.dinero + propiedadesEdificables.elementAt(i).getValor();
 				System.out.println("Ya no posees la propiedad "+propiedadesEdificables.elementAt(i).getNombre());
-				banca.anadirEdificable(propiedadesEdificables.elementAt(i));
 				propiedadesEdificables.remove(i);
+                                mostrarPropiedades();
 			}
 		}
 		else{
 			if(propiedadesNoEdificables.elementAt(i) != null){
 				this.dinero = this.dinero + propiedadesNoEdificables.elementAt(i).getValor();
 				System.out.println("Ya no posees la propiedad "+propiedadesNoEdificables.elementAt(i).getNombre());
-				banca.anadirNoEdificable(propiedadesNoEdificables.elementAt(i));
 				propiedadesNoEdificables.remove(i);
+                                mostrarPropiedades();
 			}
 		}
 	}
