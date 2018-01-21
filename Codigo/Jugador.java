@@ -7,13 +7,22 @@ public class Jugador{
 	private boolean estasCarcel;
 	private Vector<Edificable> propiedadesEdificables = new Vector<Edificable>(); 
 	private Vector<NoEdificable> propiedadesNoEdificables = new Vector<NoEdificable>();
-
-	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id){
+	//////////////////////////////////////////PARA TABLERO GRAFICO
+	private int filaTablero,colTablero; //POSICION EN MATRIZ
+    	static int filaLimiteSup = 1;
+    	static int filaLimiteInf = 21;
+    	private int colLimiteIzq,colLimiteDch;
+	//////////////////////////////////////////
+	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id,int fT,int cT,int cli,int cld){
 		this.nombre = nombre;
 		this.figura = figura;
 		this.casilla_actual = casilla_actual;
 		this.dinero = dinero;
 		this.id = id;
+		filaTablero = fT;
+		colTablero = cT;
+		colLimiteIzq = cli;
+		colLimiteDch = cld;
 	}
 	public void mostrarEstado(){
 		System.out.println("Dinero: " +this.dinero);
@@ -207,4 +216,28 @@ public class Jugador{
                 }
             }
         }
+	public int getTableroFila(){
+        	return filaTablero;
+	}
+        public int getTableroCol(){
+		return colTablero;
+    	}
+    	public int getFilaLimiteSuperior(){
+		return filaLimiteSup;
+    	}
+    	public int getFilaLimiteInferior(){
+		return filaLimiteInf;
+    	}
+    	public int getColLimiteIzq(){
+		return colLimiteIzq;
+    	}
+    	public int getColLimiteDch(){
+		return colLimiteDch;
+    	}
+    	public void setTableroFila(int fila){
+		filaTablero = fila;
+    	}
+    	public void setTableroCol(int col){
+		colTablero = col;
+    	}
 }
