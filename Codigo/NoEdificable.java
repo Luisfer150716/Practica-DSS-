@@ -22,6 +22,7 @@ public class NoEdificable extends Propiedad{
 				if(compra == 1){
 					this.tieneDueño= true;
 					setDueño(j);
+					j.setDinero(j.getDinero() - this.valor);
 					j.anadirNoEdificable(this);
 				}
 				else{
