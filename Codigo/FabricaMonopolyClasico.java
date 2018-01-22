@@ -1,5 +1,5 @@
 package monopolyclasico;
-public class FabricaMonopolyClasico extends FabricaTablero{
+public class FabricaMonopolyClasico extends FabricaTablero implements Serializable{
         
         FabricaMonopolyClasico(){}          
         
