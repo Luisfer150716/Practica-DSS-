@@ -44,7 +44,7 @@ public class Jugador{
 	}
 	public String getNombre() {return this.nombre;}
 	public String getFigura() {return this.figura;}
-	public int getCasilla_actual() {return this.casilla_actual;}
+	public int getCasillaActual() {return this.casilla_actual;}
 	public int getDinero() {return this.dinero;}
 	public String getTexto(){return this.textoIcono;}
 	public boolean getCarcel(){return this.estasCarcel;}
@@ -54,7 +54,7 @@ public class Jugador{
 	public void setNombre(String nombre) {this.nombre = nombre;}
 	public void setFigura(String figura) {this.figura = figura;}
 	public void setTexto(String t){this.textoIcono = t;}
-	public void setCasilla_actual(int casilla_actual) {this.casilla_actual = casilla_actual;}
+	public void setCasillaActual(int casilla_actual) {this.casilla_actual = casilla_actual;}
 	public void setDinero(int dinero) { this.dinero = dinero;}
 	public void setId(int id){this.id=id;}
 	public void setCarcel(boolean estasCarcel){this.estasCarcel = estasCarcel;}
