@@ -1,27 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package monopolyclasico;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class main{
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-            FabricaTablero fabrica = FabricaTablero.instancia("FabricaMonopolyClasico");
-            GestorPartida gestor =  GestorPartida.instancia();
-        
+            //FabricaTablero fabrica = FabricaTablero.instancia("FabricaMonopolyClasico");
+            FabricaTablero fabrica = FabricaTablero.getFabrica();
+
             //CREAMOS TABLERO
-            TableroGrafico tablero = new TableroGrafico();
+            TableroGrafico t = new TableroGrafico();
             
+            GestorPartida gestor =  GestorPartida.instancia();
             //GestorPartida gestor = gestor.instancia();
             gestor.muestraMenuInicial();
             Scanner sc = new Scanner(System.in);
             int opcion = sc.nextInt();
             switch (opcion) {
                     case 1:	
-                            PartidaMonopoly partida = new PartidaMonopoly(fabrica,tablero);
+                            PartidaMonopoly partida = new PartidaMonopoly(fabrica, t);
                             //AÑADE JUGADORES
                             gestor.configurarPartida(partida);
                             //INICIA PARTIDA
@@ -31,7 +26,7 @@ public class main{
                     case 2:
                             System.out.println("Introduce el nombre de la partida que quieras cargar");
                             String nombre = sc.next();
-                            Object partidaCargada = new PartidaMonopoly(fabrica, tablero);
+                            Object partidaCargada = new PartidaMonopoly(fabrica, t);
                             partidaCargada = gestor.cargarPartida(nombre);
                             gestor.desarrollaPartida((PartidaMonopoly) partidaCargada);
                             break;

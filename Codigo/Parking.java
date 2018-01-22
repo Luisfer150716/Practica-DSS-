@@ -1,4 +1,3 @@
-package monopolyclasico;
 public class Parking extends Casilla{
 	int bote;
 

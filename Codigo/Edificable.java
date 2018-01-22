@@ -1,5 +1,3 @@
-package monopolyclasico;
-
 import java.util.Scanner;
 
 public class Edificable extends Propiedad{
@@ -14,19 +12,23 @@ public class Edificable extends Propiedad{
 		this.n_casas = 0;
 	}
 	public int getPisos(){
-		return n_casas;	
+		return n_casas;
 	}
+
+	public void setPisos(int i){
+		this.n_casas +=i;
+	}
+
 	public void accion(Jugador j, PartidaMonopoly p){
                
             if(!tieneDueno){
 			if(j.getDinero() >= this.valor){
-				System.out.println("Esta propiedad edificable no tiene dueño , quieres comprarla? 1-Si Otra cosa-no");
+				System.out.println("Esta propiedad edificable no tiene dueno , quieres comprarla? 1-Si Otra cosa-no");
 				Scanner entrada = new Scanner(System.in);
 				int compra = entrada.nextInt();
 				if(compra == 1){
 					this.tieneDueno = true;
 					setDueno(j);
-					j.setDinero(j.getDinero() - this.valor);
 					j.anadirEdificable(this);
 				}
 				else{
@@ -38,8 +40,8 @@ public class Edificable extends Propiedad{
 		
 		
 		else{
-			if(this.getDueno().getId() == j.getId()){ //TU ERES EL DUEÑO,NO PAGAS, PUEDES CONSTRUIR
-				System.out.println("Tu propiedad edificable no tiene casas , quieres construir?");
+			if(this.getDueno().getId() == j.getId()){ //TU ERES EL DUEnO,NO PAGAS, PUEDES CONSTRUIR
+				System.out.println("Tu propiedad edificable no tiene casas , quieres construir? 1.-Si / 2.-No");
 				Scanner entrada = new Scanner(System.in);
 				int compra = entrada.nextInt();
 				if(compra == 1){
@@ -47,18 +49,19 @@ public class Edificable extends Propiedad{
 					while(!casa){
 						if(j.getDinero() >= this.getValor()){
 							int construyeMax = j.getDinero() / this.valor;
-							System.out.println("Puedes construir hasta "+j.getDinero()/this.valor);
+							System.out.println("Puedes construir hasta "+j.getDinero()/this.valor +" ¿cuantas casas quieres?");
 							
 							int num_cons = entrada.nextInt();
 							while(num_cons < 0 || num_cons > construyeMax){
 								System.out.println("Numero incorrecto ,introduce otro"); 
 								num_cons = entrada.nextInt();	
 							}
-							this.n_casas = num_cons;
 							j.setDinero(j.getDinero() - (num_cons * valor));
-							j.edificar(this);
+							j.edificar(this, num_cons);
+							casa = true;
 						}
 						else{
+							System.out.println("No tienes suficiente dinero");
 							casa = true;	
 						}
 						
@@ -71,11 +74,11 @@ public class Edificable extends Propiedad{
 			else{
 				
 				if(this.n_casas == 0){
-					System.out.println("Tienes que pagar al jugador"+getDueno().getNombre()+ "la cantidad de "+alquiler+ "euros.");
+					System.out.println("Tienes que pagar al jugador "+getDueno().getNombre()+ " la cantidad de "+alquiler+ "euros.");
 					j.setDinero(j.getDinero() - alquiler);
 				}
 				else{
-					System.out.println("Tienes que pagar al jugador"+getDueno().getNombre()+ "la cantidad de "+alquiler*n_casas+ "euros.");
+					System.out.println("Tienes que pagar al jugador "+getDueno().getNombre()+ " la cantidad de "+alquiler*n_casas+ "euros.");
 					j.setDinero(j.getDinero() - alquiler*n_casas);
 				}
 			}

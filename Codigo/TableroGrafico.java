@@ -1,6 +1,6 @@
-package monopolyclasico;
 import java.io.Serializable;
-public class TableroGrafico implements Serializable {
+
+public class TableroGrafico implements Serializable{
     public static String[][] tableroGrafico = new String[23][56];
     public TableroGrafico(){
         for(int i = 0 ; i < 23 ; i++){
@@ -237,27 +237,27 @@ public class TableroGrafico implements Serializable {
     public void mueveJugadorTableroGrafico(Jugador j,int casillas){
 		int casillaActual = j.getCasillaActual();
 		if(casillaActual >= 0 &&  casillaActual <= 10){
-			tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
-			tableroGrafico.mueveJugadorTableroInferior(j,casillas);
-			tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+			borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+			mueveJugadorTableroInferior(j,casillas);
+			escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
 		}
 		else{
 			if(casillaActual >= 10 && casillaActual <= 20){
-				tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
-				tableroGrafico.mueveJugadorTableroIzquierdo(j,casillas);
-				tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+				borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+				mueveJugadorTableroIzquierdo(j,casillas);
+				escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
 			}
 			else{
 				if(casillaActual >= 20 && casillaActual <= 30){
-					tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
-					tableroGrafico.mueveJugadorTableroSuperior(j,casillas);	
-					tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+					borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+					mueveJugadorTableroSuperior(j,casillas);	
+					escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
 				}
 				else{
 					if(casillaActual >=30 && casillaActual <= 40){
-						tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
-						tableroGrafico.mueveJugadorTableroDerecho(j,casillas);
-						tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+						borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+						mueveJugadorTableroDerecho(j,casillas);
+						escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
 					}
 				}
 					

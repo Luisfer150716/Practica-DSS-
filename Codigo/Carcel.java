@@ -1,4 +1,3 @@
-package monopolyclasico;
 public class Carcel extends Casilla{
 	private int[] turnos = new int[4];
 	boolean[] visita = new boolean[4];

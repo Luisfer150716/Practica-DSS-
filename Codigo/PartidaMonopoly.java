@@ -1,11 +1,9 @@
-package monopolyclasico;
-
 import java.io.Serializable;
 import java.util.Vector;
 
 
 class PartidaMonopoly implements Serializable{
-	private int turnoActual ;
+	private int turnoActual;
 	private int turnoJugador;
 	private Jugador jugadorActual;
 	private int num_jugadores;
@@ -68,19 +66,16 @@ class PartidaMonopoly implements Serializable{
 		tablero[39] = fabricaMonopoly.nuevaEdificable("Paseo del Prado",400,250);
 		
 	}
-	
+
 	public int getTurno(){
 		return this.turnoActual;
 	}
 
 	public void anadirJugador(Jugador j){
             jugadores.add(this.num_jugadores_actual,j);
-            this.num_jugadores_actual++;
-            
-		                    
-		
-		
+            this.num_jugadores_actual++;		
 	}
+
 	public void eliminarJugador(int i,String motivo){
                 System.out.println("El jugador "+i+" ha sido eliminado de la partida");
                 System.out.println(motivo);
@@ -93,11 +88,11 @@ class PartidaMonopoly implements Serializable{
 	public Jugador getJugadorActual(){
 		return this.jugadorActual;
 	}
-	
+
 	public void setTurnoJugador(int x){
 		this.turnoJugador = x;
 	}
-	
+
 	/*public void siguienteTurno(){
 		if(jugadores.elementAt(turnoJugador+1) == null){
 			turnoJugador = 0;
@@ -107,7 +102,7 @@ class PartidaMonopoly implements Serializable{
 		}
 		this.jugadorActual = jugadores.elementAt(turnoJugador);
 	}*/
-	
+
 	public void siguienteTurno(){
 		turnoJugador++;
 		turnoJugador = turnoJugador%num_jugadores;
@@ -142,13 +137,11 @@ class PartidaMonopoly implements Serializable{
             }
             return true;
         }
-	public TableroGrafico getTablero(){
+	public TableroGrafico getTableroGrafico(){
 		return this.tableroGrafico;	
 	}
-	
+
 	public void siguienteTurnoPartida(){
 		turnoActual++;
-	}
-	
-	
+	}	
 }

@@ -1,6 +1,7 @@
 import java.util.Vector;
 import java.util.Scanner;
 import java.io.Serializable;
+
 public class Jugador implements Serializable{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
@@ -73,7 +74,6 @@ public class Jugador implements Serializable{
 			}
 
 			this.casilla_actual = (this.casilla_actual +(x+y))%39;
-
 	}
 	
 	public int sumaValorPropiedades(){
@@ -100,7 +100,6 @@ public class Jugador implements Serializable{
 				propiedadesNoEdificables.add(p);
 			else System.out.println("No tienes suficiente dinero.");
 	}
-
 	public void comprarPropiedadEdificable(Edificable p){
 		//EDIFICABLES
 		if(!(casilla_actual == 6 || casilla_actual == 13 || casilla_actual == 16 || casilla_actual == 26 || 
@@ -108,7 +107,6 @@ public class Jugador implements Serializable{
 			if(p.getValor() <= dinero)
 				propiedadesEdificables.add(p);
 			else System.out.println("No tienes suficiente dinero.");		
-
 	}
 	*/
 

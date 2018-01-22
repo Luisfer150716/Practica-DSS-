@@ -1,4 +1,3 @@
-package monopolyclasico;
 public class Propiedad extends Casilla{
 
 	public int valor;

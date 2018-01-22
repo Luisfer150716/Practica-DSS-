@@ -1,4 +1,3 @@
-package monopolyclasico;
 public class Impuesto extends Casilla{
 	int cantidad;
 

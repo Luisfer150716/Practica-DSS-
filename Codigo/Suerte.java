@@ -1,30 +1,29 @@
-package monopolyclasico;
 public class Suerte extends Casilla{
 
-	public Suerte(String nombre){
-		super(nombre);
-	}
+    public Suerte(String nombre){
+        super(nombre);
+    }
 
-	public int casillasAleatorio(){
-		int cAleatorio = (int)Math.floor(Math.random()*(-5)+(5));
-		return cAleatorio;
-	}
+    public int casillasAleatorio(){
+        int cAleatorio = (int)Math.floor(Math.random()*(-5)+(5));
+        return cAleatorio;
+    }
 
-	public int dineroAleatorio(){
-		int dAleatorio = (int)((Math.floor(Math.random()*(-200)+200)));
-		return dAleatorio;
-	}
-	
-	public void accion(Jugador j,PartidaMonopoly p){
-		int a= (int)Math.floor(Math.random()*2+1);
-		
-		if(a==1){
+    public int dineroAleatorio(){
+        int dAleatorio = (int)((Math.floor(Math.random()*(-200)+200)));
+        return dAleatorio;
+    }
+    
+    public void accion(Jugador j,PartidaMonopoly p){
+        int a= (int)Math.floor(Math.random()*2+1);
+        
+        if(a==1){
                         
                         int mueve = casillasAleatorio();
-			//PARA TABLERO GRAFICO
-			TableroGrafico t = p.getTableroGrafico();
-			t.mueveJugadorTableroGrafico(j,mueve);
-			//
+            //PARA TABLERO GRAFICO
+            TableroGrafico t = p.getTableroGrafico();
+            t.mueveJugadorTableroGrafico(j,mueve);
+            //
                         System.out.println("Te mueves "+mueve+" casillas");
                         int siguienteCasilla = j.getCasillaActual() + mueve;
                         if(siguienteCasilla < 0){
@@ -35,14 +34,14 @@ public class Suerte extends Casilla{
                         else{                     
                             j.setCasillaActual(siguienteCasilla);
                         }
-		}
-		else{
+        }
+        else{
                         int dinero = dineroAleatorio();
                         j.setDinero(j.getDinero() + dinero);
                         if(j.getDinero() < 0){
                             System.out.println("Recibes una multa de "+dinero);
                             System.out.println("Tienes una deuda de "+j.getDinero());
-                            if(p.sigueJugando(j) == false){
+                            if(p.sigueJugando(j, dinero) == false){
                                 p.eliminarJugador(j.getId(),"No tienes dinero ni propiedades que hipotecar");
                             }
                             else{
@@ -62,6 +61,6 @@ public class Suerte extends Casilla{
                             j.setDinero(j.getDinero() + dinero);
                         }
                        
-		}
-	}
+        }
+    }
 }

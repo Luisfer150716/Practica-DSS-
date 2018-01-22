@@ -1,5 +1,3 @@
-package monopolyclasico;
-
 public abstract class FabricaTablero{
         public final static String F_T_M = "FabricaTableroMonopoly";
 	/*public static FabricaTablero instancia(String fabrica){

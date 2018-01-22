@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.io.*;
 
 public class GestorPartida{
 	private static GestorPartida gestor = null;
@@ -21,19 +22,19 @@ public class GestorPartida{
 		/*try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(nombre)))){
 			oos.writeObject(datos);
 		}*/
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Paths.get(nombre)));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nombre));
 		oos.writeObject(datos);
 		oos.close();
 		
-
 	}
 	public static Object cargarPartida(String nombre) throws IOException, ClassNotFoundException{
 		/*try(ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(nombre)))){
 			return ois.readObject();
 		}*/
-		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Paths.get(nombre)));
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nombre));
 		return ois.readObject();
 	}
+	
 	public void muestraMenuInicial(){
 		System.out.println("Elige opcion: ");
 		System.out.println("1.Nueva partida");
@@ -76,8 +77,8 @@ public class GestorPartida{
 			colLimiteDch++;
 						
 		}
-		int x = (int)Math.floor(Math.random()*(numJugadores));
-                System.out.println("Empieza el jugador nº "+x);
+		int x = (int)Math.floor(Math.random()*numJugadores);
+                System.out.println("Empieza el jugador numero "+(x+1));
 		partida.setJugadorActual(partida.getJugadores().elementAt(x));
 		partida.setTurnoJugador(x);
 	}
@@ -97,8 +98,7 @@ public class GestorPartida{
 			{
 				partida.tablero[10].accion(jugadorActual, partida);
 			}
-			else
-			{
+			else {
 				System.out.println("Tira el jugador "+jugadorActual.getNombre());
 				jugadorActual.mostrarEstado();
 				System.out.println("Deseas guardar la partida y salir? 1-si 2-no ");
@@ -106,21 +106,24 @@ public class GestorPartida{
 				if(guardar == 1){
 					System.out.println("Introduce nombre para la partida guardada ");
 					String nombrePartida = sc.nextLine();
-					guardarPartida(partida,nombrePartida);
+					try{
+						guardarPartida(partida,nombrePartida);
+					}catch(Exception e){}
 					System.exit(1);
 				}
-				else{
-						
-
+				else
+				{
+					System.out.println("Tira el jugador "+jugadorActual.getNombre());
+					jugadorActual.mostrarEstado();
 					jugadorActual.lanzarDados(t);
-					System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasilla_actual());
-					System.out.println(partida.tablero[jugadorActual.getCasilla_actual()].getNombre());
-					partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual, partida);
-
+					System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasillaActual());
+	                                System.out.println(partida.tablero[jugadorActual.getCasillaActual()].getNombre());
+					partida.tablero[jugadorActual.getCasillaActual()].accion(jugadorActual, partida);
+					
 
 					if(jugadorActual.getDinero() >=0){	
 						partida.siguienteTurno();
-
+											
 					}
 
 					else{
@@ -132,7 +135,7 @@ public class GestorPartida{
 								partida.siguienteTurnoPartida();
 								System.out.println("Ha ganado el jugador "+partida.getJugadores().firstElement().getNombre()+", partida finalizada!");
 							}
-
+							
 						}
 						else
 						{
@@ -141,14 +144,9 @@ public class GestorPartida{
 
 							partida.siguienteTurno();
 						}
-
-
-
 					}
-				}
 			}
 		}
+		//FIN ALGORITMO PARTIDA
+	}
 }
-
-
-

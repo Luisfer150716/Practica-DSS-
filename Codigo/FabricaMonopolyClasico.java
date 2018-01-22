@@ -1,5 +1,5 @@
-package monopolyclasico;
 import java.io.Serializable;
+
 public class FabricaMonopolyClasico extends FabricaTablero implements Serializable{
         
         FabricaMonopolyClasico(){}          

@@ -1,4 +1,3 @@
-package monopolyclasico;
 import java.util.Scanner;
 
 public class NoEdificable extends Propiedad{
@@ -17,12 +16,11 @@ public class NoEdificable extends Propiedad{
 		
 		if(!tieneDueno){
 			if(j.getDinero() >= this.valor){
-				System.out.println("Esta propiedad no edificable tiene dueño, quieres comprarla? 1.-Si/ Resto.-No");
+				System.out.println("Esta propiedad no edificable no tiene dueno, quieres comprarla? 1.-Si/ Resto.-No");
 				int compra= sc.nextInt();
 				if(compra == 1){
 					this.tieneDueno= true;
 					setDueno(j);
-					j.setDinero(j.getDinero() - this.valor);
 					j.anadirNoEdificable(this);
 				}
 				else{
