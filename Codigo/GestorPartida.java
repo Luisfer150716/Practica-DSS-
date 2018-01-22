@@ -52,17 +52,23 @@ public class GestorPartida{
 		} while(numJugadores < 2 || numJugadores > 4);
 
 		partida.setNumJugadores(numJugadores);
-		
+		//RECORDATORIO: TABLERO 23X56; J1 EMPIEZA EN F21 C51 ; J2 F21 C52;J3 F21 C53;J4 F21 C54
+		int fila = 21;
+		int col = 51;
+		int colLimiteIzq = 1;
+		int colLimiteDch = 51;
 		for(int i=1; i<=numJugadores; i++){
 			System.out.println("Introduce nombre del Jugador "+i);
 			String nombre = sc.next();
 			System.out.println("Introduce figura del Jugador "+i);
 			String figura = sc.next();
-			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i));
+			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i,fila,col,colLimiteIzq,colLimiteDch));
+			colLimiteIzq++;
+			colLimiteDch++;
 						
 		}
 		int x = (int)Math.floor(Math.random()*(numJugadores));
-                System.out.println("numero aleatorio es "+x);
+                System.out.println("Empieza el jugador nº "+x);
 		partida.setJugadorActual(partida.getJugadores().elementAt(x));
 	}
 	public void desarrollaPartida(PartidaMonopoly partida){
@@ -70,8 +76,9 @@ public class GestorPartida{
 		boolean seJuega=true;
 		int turno = partida.getTurno();
 		//int jugador = partida.getTurnoJugador();
-		Jugador banca = new Jugador("banca", null, 0, 999999, 10);
+		
 		while(seJuega){
+			
 			turno= partida.getTurno();
 			System.out.println("Es el turno "+turno);
 			partida.siguienteTurnoPartida();
