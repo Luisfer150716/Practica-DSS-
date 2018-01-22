@@ -232,6 +232,12 @@ public class TableroGrafico {
             System.out.println();
         }
     }
+    public void borraCasillaTablero(int fila ,int col){
+        tableroGrafico[fila][col] = " ";   
+    }
+    public void escribeCasillaTablero(int fila,int col,String letra){
+        tablerGrafico[fila][col] = letra;
+    }
    
     
     
