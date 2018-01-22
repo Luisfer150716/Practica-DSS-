@@ -11,6 +11,9 @@ public class main{
     public static void main(String[] args) throws IOException, ClassNotFoundException {
             FabricaTablero fabrica = FabricaTablero.instancia("FabricaMonopolyClasico");
             GestorPartida gestor =  GestorPartida.instancia();
+        
+            //CREAMOS TABLERO
+            TableroGrafico tablero = new TableroGrafico();
             
             //GestorPartida gestor = gestor.instancia();
             gestor.muestraMenuInicial();
@@ -18,8 +21,6 @@ public class main{
             int opcion = sc.nextInt();
             switch (opcion) {
                     case 1:	
-                            //CREAMOS TABLERO
-                            TableroGrafico tablero = new TableroGrafico();
                             PartidaMonopoly partida = new PartidaMonopoly(fabrica,tablero);
                             //AÑADE JUGADORES
                             gestor.configurarPartida(partida);
@@ -30,7 +31,7 @@ public class main{
                     case 2:
                             System.out.println("Introduce el nombre de la partida que quieras cargar");
                             String nombre = sc.next();
-                            Object partidaCargada = new PartidaMonopoly(fabrica);
+                            Object partidaCargada = new PartidaMonopoly(fabrica, tablero);
                             partidaCargada = gestor.cargarPartida(nombre);
                             gestor.desarrollaPartida((PartidaMonopoly) partidaCargada);
                             break;
