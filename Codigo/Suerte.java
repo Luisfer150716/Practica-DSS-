@@ -26,14 +26,14 @@ public class Suerte extends Casilla{
 			t.mueveJugadorTableroGrafico(j,mueve);
 			//
                         System.out.println("Te mueves"+mueve+" casillas");
-                        int siguienteCasilla = j.getCasilla_actual() + mueve;
+                        int siguienteCasilla = j.getCasillaActual() + mueve;
                         if(siguienteCasilla < 0){
                             int casillaFinal = 39 + siguienteCasilla +1;
                             System.out.println("Ahora estás en la casilla "+casillaFinal);
-                            j.setCasilla_actual(casillaFinal);
+                            j.setCasillaActual(casillaFinal);
                         }
                         else{                     
-                            j.setCasilla_actual(siguienteCasilla);
+                            j.setCasillaActual(siguienteCasilla);
                         }
 		}
 		else{
