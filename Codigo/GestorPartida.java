@@ -79,6 +79,7 @@ public class GestorPartida{
 		int x = (int)Math.floor(Math.random()*(numJugadores));
                 System.out.println("Empieza el jugador nº "+x);
 		partida.setJugadorActual(partida.getJugadores().elementAt(x));
+		partida.setTurnoJugador(x);
 	}
 	public void desarrollaPartida(PartidaMonopoly partida){
 		Scanner sc = new Scanner(System.in);
