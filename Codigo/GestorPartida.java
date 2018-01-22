@@ -101,38 +101,50 @@ public class GestorPartida{
 			{
 				System.out.println("Tira el jugador "+jugadorActual.getNombre());
 				jugadorActual.mostrarEstado();
-				jugadorActual.lanzarDados(t);
-				System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasilla_actual());
-                                System.out.println(partida.tablero[jugadorActual.getCasilla_actual()].getNombre());
-				partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual, partida);
-				
-
-				if(jugadorActual.getDinero() >=0){	
-					partida.siguienteTurno();
-										
+				System.out.println("Deseas guardar la partida y salir? 1-si 2-no ");
+				int guardar = sc.nextInt();
+				if(guardar == 1){
+					System.out.println("Introduce nombre para la partida guardada ");
+					String nombrePartida = sc.nextLine();
+					guardarPartida(partida,nombrePartida);
+					System.exit(1);
 				}
-
 				else{
-					if(jugadorActual.getPropiedadesEdificables().isEmpty() && jugadorActual.getPropiedadesNoEdificables().isEmpty()){
-						partida.eliminarJugador(jugadorActual.getId(),"No tienes dinero ni propiedades");
-						if(partida.getJugadores().size() == 1){
-							seJuega = false;
-							System.out.println("Solo queda un jugador");
-							partida.siguienteTurnoPartida();
-							System.out.println("Ha ganado el jugador "+partida.getJugadores().firstElement().getNombre()+", partida finalizada!");
-						}
 						
-					}
-					else
-					{
-						jugadorActual.pagaDeuda();
-					}
 
+					jugadorActual.lanzarDados(t);
+					System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasilla_actual());
+					System.out.println(partida.tablero[jugadorActual.getCasilla_actual()].getNombre());
+					partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual, partida);
+
+
+					if(jugadorActual.getDinero() >=0){	
 						partida.siguienteTurno();
+
 					}
 
+					else{
+						if(jugadorActual.getPropiedadesEdificables().isEmpty() && jugadorActual.getPropiedadesNoEdificables().isEmpty()){
+							partida.eliminarJugador(jugadorActual.getId(),"No tienes dinero ni propiedades");
+							if(partida.getJugadores().size() == 1){
+								seJuega = false;
+								System.out.println("Solo queda un jugador");
+								partida.siguienteTurnoPartida();
+								System.out.println("Ha ganado el jugador "+partida.getJugadores().firstElement().getNombre()+", partida finalizada!");
+							}
+
+						}
+						else
+						{
+							jugadorActual.pagaDeuda();
+						}
+
+							partida.siguienteTurno();
+						}
 
 
+
+					}
 				}
 			}
 		}
