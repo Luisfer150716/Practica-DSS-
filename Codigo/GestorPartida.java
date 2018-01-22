@@ -57,12 +57,21 @@ public class GestorPartida{
 		int col = 51;
 		int colLimiteIzq = 1;
 		int colLimiteDch = 51;
+		TableroGrafico t = partida.getTableroGrafico();
+		String[] textoJugador = new String[4];
+		int textoPosicion = 0;
+		textoJugador[0] = "1";
+		textoJugador[1] = "2";
+		textoJugador[2] = "3";
+		textoJugador[3] = "4";
 		for(int i=1; i<=numJugadores; i++){
 			System.out.println("Introduce nombre del Jugador "+i);
 			String nombre = sc.next();
 			System.out.println("Introduce figura del Jugador "+i);
 			String figura = sc.next();
 			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i,fila,col,colLimiteIzq,colLimiteDch));
+			t.escribeCasillaTablero(fila,col,textoJugador[textoPosicion]);
+			textoPosicion++;
 			colLimiteIzq++;
 			colLimiteDch++;
 						
@@ -78,7 +87,8 @@ public class GestorPartida{
 		//int jugador = partida.getTurnoJugador();
 		
 		while(seJuega){
-			
+			TableroGrafico t = partida.getTableroGrafico();
+			t.muestraTablero();
 			turno= partida.getTurno();
 			System.out.println("Es el turno "+turno);
 			partida.siguienteTurnoPartida();
