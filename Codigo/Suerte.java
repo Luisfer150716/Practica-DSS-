@@ -22,7 +22,7 @@ public class Suerte extends Casilla{
                         
                         int mueve = casillasAleatorio();
 			//PARA TABLERO GRAFICO
-			tableroGrafico t = p.getTableroGrafico();
+			TableroGrafico t = p.getTableroGrafico();
 			t.mueveJugadorTableroGrafico(j,mueve);
 			//
                         System.out.println("Te mueves"+mueve+" casillas");
