@@ -60,11 +60,13 @@ public class Jugador{
 	public void setCarcel(boolean estasCarcel){this.estasCarcel = estasCarcel;}
 	public void setPropiedadesEdificables(Vector<Edificable> propiedades) {this.propiedadesEdificables = propiedades;}
 	public void setPropiedadesNoEdificables(Vector<NoEdificable> propiedades) {this.propiedadesNoEdificables = propiedades;}
-	public void lanzarDados(){
+	public void lanzarDados(TableroGrafico t){
 			int x = (int)Math.floor(Math.random()*6+1);
 			int y = (int)Math.floor(Math.random()*6+1);
 			System.out.println("Has sacado: "+ (x+y));
-
+			//PARA TABLERO GRAFICO
+			int desplazamiento = x + y;
+			t.mueveJugadorTableroGrafico(j,desplazamiento);
 			if(this.casilla_actual+(x+y)>39){
 				this.dinero+=200;
 			}
