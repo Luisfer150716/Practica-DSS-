@@ -12,8 +12,9 @@ public class Jugador{
     	static int filaLimiteSup = 1;
     	static int filaLimiteInf = 21;
     	private int colLimiteIzq,colLimiteDch;
+	private String textoIcono;
 	//////////////////////////////////////////
-	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id,int fT,int cT,int cli,int cld){
+	public Jugador(String nombre, String figura, int casilla_actual, int dinero,int id,int fT,int cT,int cli,int cld,String texto){
 		this.nombre = nombre;
 		this.figura = figura;
 		this.casilla_actual = casilla_actual;
@@ -23,6 +24,7 @@ public class Jugador{
 		colTablero = cT;
 		colLimiteIzq = cli;
 		colLimiteDch = cld;
+		textoIcono = texto;
 	}
 	public void mostrarEstado(){
 		System.out.println("Dinero: " +this.dinero);
@@ -44,12 +46,14 @@ public class Jugador{
 	public String getFigura() {return this.figura;}
 	public int getCasilla_actual() {return this.casilla_actual;}
 	public int getDinero() {return this.dinero;}
+	public String getTexto(){return this.textoIcono;}
 	public boolean getCarcel(){return this.estasCarcel;}
 	public int getId(){return this.id;}
 	public Vector<Edificable> getPropiedadesEdificables(){ return this.propiedadesEdificables;}
 	public Vector<NoEdificable> getPropiedadesNoEdificables(){ return this.propiedadesNoEdificables;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
 	public void setFigura(String figura) {this.figura = figura;}
+	public void setTexto(String t){this.textoIcono = t;}
 	public void setCasilla_actual(int casilla_actual) {this.casilla_actual = casilla_actual;}
 	public void setDinero(int dinero) { this.dinero = dinero;}
 	public void setId(int id){this.id=id;}
