@@ -1,5 +1,5 @@
 package monopolyclasico;
-public class Casilla{
+public class Casilla implements Serializable{
 
 	String nombre;
 	int id;
