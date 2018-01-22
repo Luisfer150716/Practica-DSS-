@@ -69,7 +69,7 @@ public class GestorPartida{
 			String nombre = sc.next();
 			System.out.println("Introduce figura del Jugador "+i);
 			String figura = sc.next();
-			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i,fila,col,colLimiteIzq,colLimiteDch));
+			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i,fila,col,colLimiteIzq,colLimiteDch,textoJugador[textoPosicion]));
 			t.escribeCasillaTablero(fila,col,textoJugador[textoPosicion]);
 			textoPosicion++;
 			colLimiteIzq++;
@@ -85,11 +85,10 @@ public class GestorPartida{
 		boolean seJuega=true;
 		int turno = partida.getTurno();
 		//int jugador = partida.getTurnoJugador();
-		
+		TableroGrafico t = partida.getTableroGrafico();
 		while(seJuega){
-			TableroGrafico t = partida.getTableroGrafico();
 			t.muestraTablero();
-			turno= partida.getTurno();
+			turno = partida.getTurno();
 			System.out.println("Es el turno "+turno);
 			partida.siguienteTurnoPartida();
 			Jugador jugadorActual = partida.getJugadorActual();
@@ -101,7 +100,7 @@ public class GestorPartida{
 			{
 				System.out.println("Tira el jugador "+jugadorActual.getNombre());
 				jugadorActual.mostrarEstado();
-				jugadorActual.lanzarDados();
+				jugadorActual.lanzarDados(t);
 				System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasilla_actual());
                                 System.out.println(partida.tablero[jugadorActual.getCasilla_actual()].getNombre());
 				partida.tablero[jugadorActual.getCasilla_actual()].accion(jugadorActual, partida);
