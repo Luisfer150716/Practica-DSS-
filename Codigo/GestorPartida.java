@@ -43,6 +43,7 @@ public class GestorPartida{
 	}
 	public void configurarPartida(PartidaMonopoly partida){
                 Scanner sc = new Scanner(System.in);
+		Scanner g = new Scanner(Sistem.in);
                 int numJugadores = 0;
 		do{
 			System.out.println("Introduce numero de jugadores: ");
@@ -102,7 +103,7 @@ public class GestorPartida{
 				System.out.println("Tira el jugador "+jugadorActual.getNombre());
 				jugadorActual.mostrarEstado();
 				System.out.println("Deseas guardar la partida y salir? 1-si 2-no ");
-				int guardar = sc.nextInt();
+				int guardar = g.nextInt();
 				if(guardar == 1){
 					System.out.println("Introduce nombre para la partida guardada ");
 					String nombrePartida = sc.nextLine();
