@@ -138,5 +138,8 @@ class PartidaMonopoly implements Serializable{
             }
             return true;
         }
+	public TableroGrafico getTablero(){
+		return this.tableroGrafico;	
+	}
 	
 }
