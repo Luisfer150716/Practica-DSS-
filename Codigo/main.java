@@ -11,6 +11,7 @@ public class main{
     public static void main(String[] args) throws IOException, ClassNotFoundException {
             FabricaTablero fabrica = FabricaTablero.instancia("FabricaMonopolyClasico");
             GestorPartida gestor =  GestorPartida.instancia();
+            
             //GestorPartida gestor = gestor.instancia();
             gestor.muestraMenuInicial();
             Scanner sc = new Scanner(System.in);
@@ -18,7 +19,8 @@ public class main{
             switch (opcion) {
                     case 1:	
                             //CREAMOS TABLERO
-                            PartidaMonopoly partida = new PartidaMonopoly(fabrica);
+                            TableroGrafico tablero = new TableroGrafico();
+                            PartidaMonopoly partida = new PartidaMonopoly(fabrica,tablero);
                             //AÑADE JUGADORES
                             gestor.configurarPartida(partida);
                             //INICIA PARTIDA
