@@ -135,6 +135,9 @@ class PartidaMonopoly implements Serializable{
 		return this.tableroGrafico;	
 	}
 	
+	public void siguienteTurnoPartida(){
+		turnoActual++;
+	}
 	
 	
 }
