@@ -26,7 +26,8 @@ public class MonopolyClasico {
             switch (opcion) {
                     case 1:	
                             //CREAMOS TABLERO
-                            PartidaMonopoly partida = new PartidaMonopoly(fabrica);
+                            TableroGrafico t = new TableroGrafico();
+                            PartidaMonopoly partida = new PartidaMonopoly(fabrica,t);
                             //AÑADE JUGADORES
                             gestor.configurarPartida(partida);
                             //INICIA PARTIDA
