@@ -14,10 +14,12 @@ class PartidaMonopoly implements Serializable{
 	public static Casilla[] tablero = new Casilla[40];
 	private long duracionPartida ;
         FabricaTablero fabricaMonopoly;
+	TableroGrafico tableroGrafico
 
-	public PartidaMonopoly(FabricaTablero f){
+	public PartidaMonopoly(FabricaTablero f,TableroGrafico t){
 		turnoActual = 1;
                 this.fabricaMonopoly = f;
+		this.tableroGrafico = t;
 		this.construyeTablero();
                
 		
