@@ -14,7 +14,7 @@ class PartidaMonopoly implements Serializable{
 	public static Casilla[] tablero = new Casilla[40];
 	private long duracionPartida ;
         FabricaTablero fabricaMonopoly;
-	TableroGrafico tableroGrafico
+	TableroGrafico tableroGrafico;
 
 	public PartidaMonopoly(FabricaTablero f,TableroGrafico t){
 		turnoActual = 1;
