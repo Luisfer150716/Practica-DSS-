@@ -66,7 +66,7 @@ public class Jugador{
 			System.out.println("Has sacado: "+ (x+y));
 			//PARA TABLERO GRAFICO
 			int desplazamiento = x + y;
-			t.mueveJugadorTableroGrafico(j,desplazamiento);
+			t.mueveJugadorTableroGrafico(this,desplazamiento);
 			if(this.casilla_actual+(x+y)>39){
 				this.dinero+=200;
 			}
