@@ -3,14 +3,14 @@ package monopolyclasico;
 import java.util.Scanner;
 
 public class Edificable extends Propiedad{
-	boolean tieneDueño;
+	boolean tieneDueno;
 	int alquiler;
 	int n_casas;
 	
 	public Edificable(String nombre, int valor, int alquiler){
 		super(nombre, valor);
 		this.alquiler = alquiler;
-		this.tieneDueño = false;
+		this.tieneDueno = false;
 		this.n_casas = 0;
 	}
 	public int getPisos(){
@@ -18,14 +18,14 @@ public class Edificable extends Propiedad{
 	}
 	public void accion(Jugador j, PartidaMonopoly p){
                
-            if(!tieneDueño){
+            if(!tieneDueno){
 			if(j.getDinero() >= this.valor){
 				System.out.println("Esta propiedad edificable no tiene dueño , quieres comprarla? 1-Si Otra cosa-no");
 				Scanner entrada = new Scanner(System.in);
 				int compra = entrada.nextInt();
 				if(compra == 1){
-					this.tieneDueño = true;
-					setDueño(j);
+					this.tieneDueno = true;
+					setDueno(j);
 					j.setDinero(j.getDinero() - this.valor);
 					j.anadirEdificable(this);
 				}
@@ -38,7 +38,7 @@ public class Edificable extends Propiedad{
 		
 		
 		else{
-			if(this.getDueño().getId() == j.getId()){ //TU ERES EL DUEÑO,NO PAGAS, PUEDES CONSTRUIR
+			if(this.getDueno().getId() == j.getId()){ //TU ERES EL DUEÑO,NO PAGAS, PUEDES CONSTRUIR
 				System.out.println("Tu propiedad edificable no tiene casas , quieres construir?");
 				Scanner entrada = new Scanner(System.in);
 				int compra = entrada.nextInt();
@@ -71,11 +71,11 @@ public class Edificable extends Propiedad{
 			else{
 				
 				if(this.n_casas == 0){
-					System.out.println("Tienes que pagar al jugador"+getDueño().getNombre()+ "la cantidad de "+alquiler+ "euros.");
+					System.out.println("Tienes que pagar al jugador"+getDueno().getNombre()+ "la cantidad de "+alquiler+ "euros.");
 					j.setDinero(j.getDinero() - alquiler);
 				}
 				else{
-					System.out.println("Tienes que pagar al jugador"+getDueño().getNombre()+ "la cantidad de "+alquiler*n_casas+ "euros.");
+					System.out.println("Tienes que pagar al jugador"+getDueno().getNombre()+ "la cantidad de "+alquiler*n_casas+ "euros.");
 					j.setDinero(j.getDinero() - alquiler*n_casas);
 				}
 			}
