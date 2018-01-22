@@ -142,4 +142,35 @@ class PartidaMonopoly implements Serializable{
 		return this.tableroGrafico;	
 	}
 	
+	public void mueveJugadorTableroGrafico(Jugador j,int casillas){
+		int casillaActual = j.getCasillaActual();
+		if(casillaActual >= 0 &&  casillaActual <= 10){
+			tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+			tableroGrafico.mueveJugadorTableroInferior(j,casillas);
+			tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+		}
+		else{
+			if(casillaActual >= 10 && casillaActual <= 20){
+				tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+				tableroGrafico.mueveJugadorTableroIzquierdo(j,casillas);
+				tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+			}
+			else{
+				if(casillaActual >= 20 && casillaActual <= 30){
+					tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+					tableroGrafico.mueveJugadorTableroSuperior(j,casillas);	
+					tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+				}
+				else{
+					if(casillaActual >=30 && casillaActual <= 40){
+						tableroGrafico.borraCasillaTablero(j.getTableroFila(),j.getTableroCol());
+						tableroGrafico.mueveJugadorTableroDerecho(j,casillas);
+						tableroGrafico.escribeCasillaTablero(j.getTableroFila(),j.getTableroCol(),j.getTexto());
+					}
+				}
+					
+			}
+		}
+	}
+	
 }
