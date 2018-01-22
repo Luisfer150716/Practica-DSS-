@@ -93,13 +93,19 @@ class PartidaMonopoly implements Serializable{
 	public Jugador getJugadorActual(){
 		return this.jugadorActual;
 	}
-	public void siguienteTurno(){
+	/*public void siguienteTurno(){
 		if(jugadores.elementAt(turnoJugador+1) == null){
 			turnoJugador = 0;
 		}
 		else{
 			turnoJugador++;
 		}
+		this.jugadorActual = jugadores.elementAt(turnoJugador);
+	}*/
+	
+	public void siguienteTurno(){
+		turnoJugador++;
+		turnoJugador = turnoJugador%4;
 		this.jugadorActual = jugadores.elementAt(turnoJugador);
 	}
 		
