@@ -269,7 +269,7 @@ public class TableroGrafico implements Serializable {
         tableroGrafico[fila][col] = " ";   
     }
     public void escribeCasillaTablero(int fila,int col,String letra){
-        tablerGrafico[fila][col] = letra;
+        tableroGrafico[fila][col] = letra;
     }
    
     
