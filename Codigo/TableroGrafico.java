@@ -1,4 +1,5 @@
 package monopolyclasico;
+import java.io.Serializable;
 public class TableroGrafico implements Serializable {
     public static String[][] tableroGrafico = new String[23][56];
     public TableroGrafico(){
