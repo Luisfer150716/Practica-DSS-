@@ -1,4 +1,5 @@
 package monopolyclasico;
+import java.io.Serializable;
 public class Casilla implements Serializable{
 
 	String nombre;
