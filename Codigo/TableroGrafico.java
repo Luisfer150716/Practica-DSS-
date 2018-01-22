@@ -1,5 +1,5 @@
 package monopolyclasico;
-public class TableroGrafico {
+public class TableroGrafico implements Serializable {
     public static String[][] tableroGrafico = new String[23][56];
     public TableroGrafico(){
         for(int i = 0 ; i < 23 ; i++){
