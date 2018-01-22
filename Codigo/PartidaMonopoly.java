@@ -68,14 +68,7 @@ class PartidaMonopoly implements Serializable{
 		tablero[39] = fabricaMonopoly.nuevaEdificable("Paseo del Prado",400,250);
 		
 	}
-	public PartidaMonopoly duracion(long d){
-		this.duracionPartida = d;
-		return this;
-	}
-	public PartidaMonopoly partida(){
-		return new PartidaMonopoly(fabricaMonopoly);
-	}
-
+	
 	public int getTurno(){
 		return this.turnoActual;
 	}
