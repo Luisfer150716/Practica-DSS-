@@ -1,6 +1,6 @@
 import java.util.Vector;
 import java.util.Scanner;
-public class Jugador{
+public class Jugador implements Serializable{
 	private String nombre, figura;
 	private int casilla_actual, dinero;
 	private int id;
