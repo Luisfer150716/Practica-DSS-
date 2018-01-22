@@ -148,8 +148,7 @@ public class GestorPartida{
 				}
 			}
 		}
-		//FIN ALGORITMO PARTIDA
-	}
 }
+
 
 
