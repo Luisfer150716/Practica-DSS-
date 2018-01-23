@@ -43,7 +43,7 @@ public class GestorPartida{
 	}
 	public void configurarPartida(PartidaMonopoly partida){
                 Scanner sc = new Scanner(System.in);
-		Scanner g = new Scanner(Sistem.in);
+		
                 int numJugadores = 0;
 		do{
 			System.out.println("Introduce numero de jugadores: ");
@@ -85,6 +85,7 @@ public class GestorPartida{
 	}
 	public void desarrollaPartida(PartidaMonopoly partida){
 		Scanner sc = new Scanner(System.in);
+		Scanner g = new Scanner(System.in);
 		boolean seJuega=true;
 		int turno = partida.getTurno();
 		//int jugador = partida.getTurnoJugador();
