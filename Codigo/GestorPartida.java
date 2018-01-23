@@ -66,13 +66,14 @@ public class GestorPartida{
 		textoJugador[1] = "2";
 		textoJugador[2] = "3";
 		textoJugador[3] = "4";
-		for(int i=1; i<=numJugadores; i++){
+		for(int i=0; i<numJugadores; i++){
 			System.out.println("Introduce nombre del Jugador "+i);
 			String nombre = sc.next();
 			System.out.println("Introduce figura del Jugador "+i);
 			String figura = sc.next();
 			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i,fila,col,colLimiteIzq,colLimiteDch,textoJugador[textoPosicion]));
 			t.escribeCasillaTablero(fila,col,textoJugador[textoPosicion]);
+			col++;
 			textoPosicion++;
 			colLimiteIzq++;
 			colLimiteDch++;
