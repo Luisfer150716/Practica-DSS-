@@ -42,7 +42,7 @@ public class GestorPartida{
 		System.out.println("3.Salir");
 	}
 	public void configurarPartida(PartidaMonopoly partida){
-                Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 		
                 int numJugadores = 0;
 		do{
@@ -66,15 +66,19 @@ public class GestorPartida{
 		textoJugador[1] = "2";
 		textoJugador[2] = "3";
 		textoJugador[3] = "4";
+		int num_j = 1;
 		for(int i=0; i<numJugadores; i++){
-			System.out.println("Introduce nombre del Jugador "+i);
+
+			System.out.println("Introduce nombre del Jugador "+num_j);
+			
 			String nombre = sc.next();
-			System.out.println("Introduce figura del Jugador "+i);
+			System.out.println("Introduce figura del Jugador "+num_j);
 			String figura = sc.next();
+			num_j++;
 			partida.anadirJugador(new Jugador(nombre, figura, 0, 500,i,fila,col,colLimiteIzq,colLimiteDch,textoJugador[textoPosicion]));
 			t.escribeCasillaTablero(fila,col,textoJugador[textoPosicion]);
-			col++;
 			textoPosicion++;
+			col++;
 			colLimiteIzq++;
 			colLimiteDch++;
 						
@@ -116,11 +120,10 @@ public class GestorPartida{
 				}
 				else
 				{
-					System.out.println("Tira el jugador "+jugadorActual.getNombre());
-					jugadorActual.mostrarEstado();
+					
 					jugadorActual.lanzarDados(t);
 					System.out.println(jugadorActual.getNombre()+" se ha movido a la casilla: "+jugadorActual.getCasillaActual());
-	                                System.out.println(partida.tablero[jugadorActual.getCasillaActual()].getNombre());
+	                System.out.println(partida.tablero[jugadorActual.getCasillaActual()].getNombre());
 					partida.tablero[jugadorActual.getCasillaActual()].accion(jugadorActual, partida);
 					
 

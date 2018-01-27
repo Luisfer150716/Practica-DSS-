@@ -23,13 +23,16 @@ public class Edificable extends Propiedad{
                
             if(!tieneDueno){
 			if(j.getDinero() >= this.valor){
-				System.out.println("Esta propiedad edificable no tiene dueno , quieres comprarla? 1-Si Otra cosa-no");
+				System.out.println("Esta propiedad edificable no tiene dueno y cuesta "+this.valor+" , quieres comprarla? 1-Si Otra cosa-no");
 				Scanner entrada = new Scanner(System.in);
 				int compra = entrada.nextInt();
 				if(compra == 1){
 					this.tieneDueno = true;
 					setDueno(j);
 					j.anadirEdificable(this);
+					j.setDinero(j.getDinero() - this.valor);
+					System.out.println(j.getNombre()+" ha comprado la propiedad "+this.nombre);
+					System.out.println(j.getNombre()+" tiene ahora de dinero: "+j.getDinero());
 				}
 				else{
 					System.out.println("Decides no comprarla!");

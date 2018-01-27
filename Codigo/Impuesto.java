@@ -7,7 +7,7 @@ public class Impuesto extends Casilla{
 	}
         
     
-        public void accion(Jugador j){
+        public void accion(Jugador j,PartidaMonopoly p){
             System.out.println("Te toca pagar impuestos, pagas: "+cantidad);
             j.setDinero(j.getDinero() - cantidad);
         }
